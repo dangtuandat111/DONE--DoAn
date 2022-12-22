@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Packages\Server\Entities\Model\Customer;
+use Packages\Server\Repository\Admin\CustomerRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
     }
 }

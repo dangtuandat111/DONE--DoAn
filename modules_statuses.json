@@ -1,3 +1,5 @@
 {
-    "SHOP": true
+    "SHOP": true,
+    "Client": true,
+    "Server": true
 }

@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'customer',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
+        'admin_api' => [
+            'driver' => 'token',
+            'provider' => 'admin',
+        ],
     ],
 
     /*
@@ -62,7 +74,17 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => Packages\Server\Entities\Model\User::class,
+        ],
+
+        'customer' => [
+            'driver' => 'eloquent',
+            'model' => \Packages\Client\Entities\Customer\Customer::class,
+        ],
+
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => \Packages\Server\Entities\Admin\Admin::class,
         ],
 
         // 'users' => [
@@ -89,6 +111,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'customer' => [
+            'provider' => 'customer',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admin' => [
+            'provider' => 'admin',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
