@@ -26,7 +26,7 @@ function getSearchProduct(page = 1) {
     ajaxWithCsrf(url, params, function processResponse(res) {
         if (res.data.status) {
             appendResponse(res, () => {
-                $("#sortable-table-1").tablesort();
+                $("#product-table").tablesort();
                 expandRow();
             })
         } else {

@@ -1,33 +1,33 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./Packages/Server/node_modules/axios/index.js":
-/*!*****************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/index.js ***!
-  \*****************************************************/
+/***/ "./node_modules/axios/index.js":
+/*!*************************************!*\
+  !*** ./node_modules/axios/index.js ***!
+  \*************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__(/*! ./lib/axios */ "./Packages/Server/node_modules/axios/lib/axios.js");
+module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/lib/axios.js");
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/adapters/xhr.js":
-/*!****************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/adapters/xhr.js ***!
-  \****************************************************************/
+/***/ "./node_modules/axios/lib/adapters/xhr.js":
+/*!************************************************!*\
+  !*** ./node_modules/axios/lib/adapters/xhr.js ***!
+  \************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
-var settle = __webpack_require__(/*! ./../core/settle */ "./Packages/Server/node_modules/axios/lib/core/settle.js");
-var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./Packages/Server/node_modules/axios/lib/helpers/cookies.js");
-var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./Packages/Server/node_modules/axios/lib/helpers/buildURL.js");
-var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./Packages/Server/node_modules/axios/lib/core/buildFullPath.js");
-var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./Packages/Server/node_modules/axios/lib/helpers/parseHeaders.js");
-var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./Packages/Server/node_modules/axios/lib/helpers/isURLSameOrigin.js");
-var createError = __webpack_require__(/*! ../core/createError */ "./Packages/Server/node_modules/axios/lib/core/createError.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
+var settle = __webpack_require__(/*! ./../core/settle */ "./node_modules/axios/lib/core/settle.js");
+var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
+var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/axios/lib/helpers/buildURL.js");
+var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./node_modules/axios/lib/core/buildFullPath.js");
+var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/axios/lib/helpers/parseHeaders.js");
+var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./node_modules/axios/lib/helpers/isURLSameOrigin.js");
+var createError = __webpack_require__(/*! ../core/createError */ "./node_modules/axios/lib/core/createError.js");
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -211,20 +211,20 @@ module.exports = function xhrAdapter(config) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/axios.js":
-/*!*********************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/axios.js ***!
-  \*********************************************************/
+/***/ "./node_modules/axios/lib/axios.js":
+/*!*****************************************!*\
+  !*** ./node_modules/axios/lib/axios.js ***!
+  \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
-var bind = __webpack_require__(/*! ./helpers/bind */ "./Packages/Server/node_modules/axios/lib/helpers/bind.js");
-var Axios = __webpack_require__(/*! ./core/Axios */ "./Packages/Server/node_modules/axios/lib/core/Axios.js");
-var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ "./Packages/Server/node_modules/axios/lib/core/mergeConfig.js");
-var defaults = __webpack_require__(/*! ./defaults */ "./Packages/Server/node_modules/axios/lib/defaults.js");
+var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.js");
+var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
+var Axios = __webpack_require__(/*! ./core/Axios */ "./node_modules/axios/lib/core/Axios.js");
+var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ "./node_modules/axios/lib/core/mergeConfig.js");
+var defaults = __webpack_require__(/*! ./defaults */ "./node_modules/axios/lib/defaults.js");
 
 /**
  * Create an instance of Axios
@@ -257,18 +257,18 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ "./Packages/Server/node_modules/axios/lib/cancel/Cancel.js");
-axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ "./Packages/Server/node_modules/axios/lib/cancel/CancelToken.js");
-axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ "./Packages/Server/node_modules/axios/lib/cancel/isCancel.js");
+axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ "./node_modules/axios/lib/cancel/Cancel.js");
+axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ "./node_modules/axios/lib/cancel/CancelToken.js");
+axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ "./node_modules/axios/lib/cancel/isCancel.js");
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(/*! ./helpers/spread */ "./Packages/Server/node_modules/axios/lib/helpers/spread.js");
+axios.spread = __webpack_require__(/*! ./helpers/spread */ "./node_modules/axios/lib/helpers/spread.js");
 
 // Expose isAxiosError
-axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./Packages/Server/node_modules/axios/lib/helpers/isAxiosError.js");
+axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./node_modules/axios/lib/helpers/isAxiosError.js");
 
 module.exports = axios;
 
@@ -278,10 +278,10 @@ module.exports["default"] = axios;
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/cancel/Cancel.js":
-/*!*****************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/cancel/Cancel.js ***!
-  \*****************************************************************/
+/***/ "./node_modules/axios/lib/cancel/Cancel.js":
+/*!*************************************************!*\
+  !*** ./node_modules/axios/lib/cancel/Cancel.js ***!
+  \*************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -308,16 +308,16 @@ module.exports = Cancel;
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/cancel/CancelToken.js":
-/*!**********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/cancel/CancelToken.js ***!
-  \**********************************************************************/
+/***/ "./node_modules/axios/lib/cancel/CancelToken.js":
+/*!******************************************************!*\
+  !*** ./node_modules/axios/lib/cancel/CancelToken.js ***!
+  \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(/*! ./Cancel */ "./Packages/Server/node_modules/axios/lib/cancel/Cancel.js");
+var Cancel = __webpack_require__(/*! ./Cancel */ "./node_modules/axios/lib/cancel/Cancel.js");
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -376,10 +376,10 @@ module.exports = CancelToken;
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/cancel/isCancel.js":
-/*!*******************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/cancel/isCancel.js ***!
-  \*******************************************************************/
+/***/ "./node_modules/axios/lib/cancel/isCancel.js":
+/*!***************************************************!*\
+  !*** ./node_modules/axios/lib/cancel/isCancel.js ***!
+  \***************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -392,21 +392,21 @@ module.exports = function isCancel(value) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/Axios.js":
-/*!**************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/Axios.js ***!
-  \**************************************************************/
+/***/ "./node_modules/axios/lib/core/Axios.js":
+/*!**********************************************!*\
+  !*** ./node_modules/axios/lib/core/Axios.js ***!
+  \**********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
-var buildURL = __webpack_require__(/*! ../helpers/buildURL */ "./Packages/Server/node_modules/axios/lib/helpers/buildURL.js");
-var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "./Packages/Server/node_modules/axios/lib/core/InterceptorManager.js");
-var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "./Packages/Server/node_modules/axios/lib/core/dispatchRequest.js");
-var mergeConfig = __webpack_require__(/*! ./mergeConfig */ "./Packages/Server/node_modules/axios/lib/core/mergeConfig.js");
-var validator = __webpack_require__(/*! ../helpers/validator */ "./Packages/Server/node_modules/axios/lib/helpers/validator.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
+var buildURL = __webpack_require__(/*! ../helpers/buildURL */ "./node_modules/axios/lib/helpers/buildURL.js");
+var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "./node_modules/axios/lib/core/InterceptorManager.js");
+var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "./node_modules/axios/lib/core/dispatchRequest.js");
+var mergeConfig = __webpack_require__(/*! ./mergeConfig */ "./node_modules/axios/lib/core/mergeConfig.js");
+var validator = __webpack_require__(/*! ../helpers/validator */ "./node_modules/axios/lib/helpers/validator.js");
 
 var validators = validator.validators;
 /**
@@ -551,16 +551,16 @@ module.exports = Axios;
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/InterceptorManager.js":
-/*!***************************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/InterceptorManager.js ***!
-  \***************************************************************************/
+/***/ "./node_modules/axios/lib/core/InterceptorManager.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/axios/lib/core/InterceptorManager.js ***!
+  \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 
 function InterceptorManager() {
   this.handlers = [];
@@ -616,17 +616,17 @@ module.exports = InterceptorManager;
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/buildFullPath.js":
-/*!**********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/buildFullPath.js ***!
-  \**********************************************************************/
+/***/ "./node_modules/axios/lib/core/buildFullPath.js":
+/*!******************************************************!*\
+  !*** ./node_modules/axios/lib/core/buildFullPath.js ***!
+  \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var isAbsoluteURL = __webpack_require__(/*! ../helpers/isAbsoluteURL */ "./Packages/Server/node_modules/axios/lib/helpers/isAbsoluteURL.js");
-var combineURLs = __webpack_require__(/*! ../helpers/combineURLs */ "./Packages/Server/node_modules/axios/lib/helpers/combineURLs.js");
+var isAbsoluteURL = __webpack_require__(/*! ../helpers/isAbsoluteURL */ "./node_modules/axios/lib/helpers/isAbsoluteURL.js");
+var combineURLs = __webpack_require__(/*! ../helpers/combineURLs */ "./node_modules/axios/lib/helpers/combineURLs.js");
 
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
@@ -647,16 +647,16 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/createError.js":
-/*!********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/createError.js ***!
-  \********************************************************************/
+/***/ "./node_modules/axios/lib/core/createError.js":
+/*!****************************************************!*\
+  !*** ./node_modules/axios/lib/core/createError.js ***!
+  \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(/*! ./enhanceError */ "./Packages/Server/node_modules/axios/lib/core/enhanceError.js");
+var enhanceError = __webpack_require__(/*! ./enhanceError */ "./node_modules/axios/lib/core/enhanceError.js");
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -676,19 +676,19 @@ module.exports = function createError(message, config, code, request, response) 
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/dispatchRequest.js":
-/*!************************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/dispatchRequest.js ***!
-  \************************************************************************/
+/***/ "./node_modules/axios/lib/core/dispatchRequest.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/core/dispatchRequest.js ***!
+  \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
-var transformData = __webpack_require__(/*! ./transformData */ "./Packages/Server/node_modules/axios/lib/core/transformData.js");
-var isCancel = __webpack_require__(/*! ../cancel/isCancel */ "./Packages/Server/node_modules/axios/lib/cancel/isCancel.js");
-var defaults = __webpack_require__(/*! ../defaults */ "./Packages/Server/node_modules/axios/lib/defaults.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
+var transformData = __webpack_require__(/*! ./transformData */ "./node_modules/axios/lib/core/transformData.js");
+var isCancel = __webpack_require__(/*! ../cancel/isCancel */ "./node_modules/axios/lib/cancel/isCancel.js");
+var defaults = __webpack_require__(/*! ../defaults */ "./node_modules/axios/lib/defaults.js");
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -769,10 +769,10 @@ module.exports = function dispatchRequest(config) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/enhanceError.js":
-/*!*********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/enhanceError.js ***!
-  \*********************************************************************/
+/***/ "./node_modules/axios/lib/core/enhanceError.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/axios/lib/core/enhanceError.js ***!
+  \*****************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -822,16 +822,16 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/mergeConfig.js":
-/*!********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/mergeConfig.js ***!
-  \********************************************************************/
+/***/ "./node_modules/axios/lib/core/mergeConfig.js":
+/*!****************************************************!*\
+  !*** ./node_modules/axios/lib/core/mergeConfig.js ***!
+  \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ../utils */ "./node_modules/axios/lib/utils.js");
 
 /**
  * Config-specific merge-function which creates a new config-object
@@ -920,16 +920,16 @@ module.exports = function mergeConfig(config1, config2) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/settle.js":
-/*!***************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/settle.js ***!
-  \***************************************************************/
+/***/ "./node_modules/axios/lib/core/settle.js":
+/*!***********************************************!*\
+  !*** ./node_modules/axios/lib/core/settle.js ***!
+  \***********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var createError = __webpack_require__(/*! ./createError */ "./Packages/Server/node_modules/axios/lib/core/createError.js");
+var createError = __webpack_require__(/*! ./createError */ "./node_modules/axios/lib/core/createError.js");
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -956,17 +956,17 @@ module.exports = function settle(resolve, reject, response) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/core/transformData.js":
-/*!**********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/core/transformData.js ***!
-  \**********************************************************************/
+/***/ "./node_modules/axios/lib/core/transformData.js":
+/*!******************************************************!*\
+  !*** ./node_modules/axios/lib/core/transformData.js ***!
+  \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
-var defaults = __webpack_require__(/*! ./../defaults */ "./Packages/Server/node_modules/axios/lib/defaults.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
+var defaults = __webpack_require__(/*! ./../defaults */ "./node_modules/axios/lib/defaults.js");
 
 /**
  * Transform the data for a request or a response
@@ -989,19 +989,19 @@ module.exports = function transformData(data, headers, fns) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/defaults.js":
-/*!************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/defaults.js ***!
-  \************************************************************/
+/***/ "./node_modules/axios/lib/defaults.js":
+/*!********************************************!*\
+  !*** ./node_modules/axios/lib/defaults.js ***!
+  \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./Packages/Server/node_modules/process/browser.js");
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 
 
-var utils = __webpack_require__(/*! ./utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
-var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ "./Packages/Server/node_modules/axios/lib/helpers/normalizeHeaderName.js");
-var enhanceError = __webpack_require__(/*! ./core/enhanceError */ "./Packages/Server/node_modules/axios/lib/core/enhanceError.js");
+var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.js");
+var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ "./node_modules/axios/lib/helpers/normalizeHeaderName.js");
+var enhanceError = __webpack_require__(/*! ./core/enhanceError */ "./node_modules/axios/lib/core/enhanceError.js");
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -1017,10 +1017,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(/*! ./adapters/xhr */ "./Packages/Server/node_modules/axios/lib/adapters/xhr.js");
+    adapter = __webpack_require__(/*! ./adapters/xhr */ "./node_modules/axios/lib/adapters/xhr.js");
   } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(/*! ./adapters/http */ "./Packages/Server/node_modules/axios/lib/adapters/xhr.js");
+    adapter = __webpack_require__(/*! ./adapters/http */ "./node_modules/axios/lib/adapters/xhr.js");
   }
   return adapter;
 }
@@ -1135,10 +1135,10 @@ module.exports = defaults;
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/bind.js":
-/*!****************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/bind.js ***!
-  \****************************************************************/
+/***/ "./node_modules/axios/lib/helpers/bind.js":
+/*!************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/bind.js ***!
+  \************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1157,16 +1157,16 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/buildURL.js":
-/*!********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/buildURL.js ***!
-  \********************************************************************/
+/***/ "./node_modules/axios/lib/helpers/buildURL.js":
+/*!****************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
+  \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -1238,10 +1238,10 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/combineURLs.js":
-/*!***********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/combineURLs.js ***!
-  \***********************************************************************/
+/***/ "./node_modules/axios/lib/helpers/combineURLs.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/combineURLs.js ***!
+  \*******************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1263,16 +1263,16 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/cookies.js":
-/*!*******************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/cookies.js ***!
-  \*******************************************************************/
+/***/ "./node_modules/axios/lib/helpers/cookies.js":
+/*!***************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/cookies.js ***!
+  \***************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -1327,10 +1327,10 @@ module.exports = (
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/isAbsoluteURL.js":
-/*!*************************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
-  \*************************************************************************/
+/***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
+  \*********************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1352,10 +1352,10 @@ module.exports = function isAbsoluteURL(url) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/isAxiosError.js":
-/*!************************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/isAxiosError.js ***!
-  \************************************************************************/
+/***/ "./node_modules/axios/lib/helpers/isAxiosError.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
+  \********************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1374,16 +1374,16 @@ module.exports = function isAxiosError(payload) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/isURLSameOrigin.js":
-/*!***************************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
-  \***************************************************************************/
+/***/ "./node_modules/axios/lib/helpers/isURLSameOrigin.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
+  \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -1453,16 +1453,16 @@ module.exports = (
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/normalizeHeaderName.js":
-/*!*******************************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/axios/lib/helpers/normalizeHeaderName.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
+  \***************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ../utils */ "./node_modules/axios/lib/utils.js");
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -1476,16 +1476,16 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/parseHeaders.js":
-/*!************************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/parseHeaders.js ***!
-  \************************************************************************/
+/***/ "./node_modules/axios/lib/helpers/parseHeaders.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/parseHeaders.js ***!
+  \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ "./Packages/Server/node_modules/axios/lib/utils.js");
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -1540,10 +1540,10 @@ module.exports = function parseHeaders(headers) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/spread.js":
-/*!******************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/spread.js ***!
-  \******************************************************************/
+/***/ "./node_modules/axios/lib/helpers/spread.js":
+/*!**************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/spread.js ***!
+  \**************************************************/
 /***/ ((module) => {
 
 "use strict";
@@ -1578,16 +1578,16 @@ module.exports = function spread(callback) {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/helpers/validator.js":
-/*!*********************************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/helpers/validator.js ***!
-  \*********************************************************************/
+/***/ "./node_modules/axios/lib/helpers/validator.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/validator.js ***!
+  \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var pkg = __webpack_require__(/*! ./../../package.json */ "./Packages/Server/node_modules/axios/package.json");
+var pkg = __webpack_require__(/*! ./../../package.json */ "./node_modules/axios/package.json");
 
 var validators = {};
 
@@ -1694,16 +1694,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/axios/lib/utils.js":
-/*!*********************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/lib/utils.js ***!
-  \*********************************************************/
+/***/ "./node_modules/axios/lib/utils.js":
+/*!*****************************************!*\
+  !*** ./node_modules/axios/lib/utils.js ***!
+  \*****************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var bind = __webpack_require__(/*! ./helpers/bind */ "./Packages/Server/node_modules/axios/lib/helpers/bind.js");
+var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
 
 // utils is a library of generic helper functions non-specific to axios
 
@@ -2054,10 +2054,154 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./Packages/Server/node_modules/process/browser.js":
-/*!*********************************************************!*\
-  !*** ./Packages/Server/node_modules/process/browser.js ***!
-  \*********************************************************/
+/***/ "./Packages/Server/Resources/assets/js/app.js":
+/*!****************************************************!*\
+  !*** ./Packages/Server/Resources/assets/js/app.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ajaxWithCsrf": () => (/* binding */ ajaxWithCsrf)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+function ajaxWithCsrf(url, params, callback, errorMessage) {
+  var config = {
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    withCredentials: true
+  };
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, params, config).then(function (res) {
+    callback(res);
+  })["catch"](function () {
+    axiosErrorHandler(errorMessage);
+  });
+}
+function axiosErrorHandler(errorMessage) {
+  toastr.error(errorMessage);
+}
+
+/***/ }),
+
+/***/ "./Packages/Server/Resources/assets/js/brand/brand.js":
+/*!************************************************************!*\
+  !*** ./Packages/Server/Resources/assets/js/brand/brand.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./Packages/Server/Resources/assets/js/app.js");
+
+toastr.options.timeOut = 5000;
+$(document).ready(function () {
+  $("#sortable-table-1").tablesort();
+  $('.update_status_disabled').on('click', function () {
+    var id = $(this).data('id');
+    var status = 0;
+    var url = $('#update_status_brand').val();
+    var params = {
+      'id': id,
+      'status': status
+    };
+    var errorMessage = 'Update brand info failed.';
+    var that = $(this);
+    var row_id = $(this).closest('td');
+    (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
+      toastr.success('Update brand info successfull.');
+      $(that).removeClass('btn btn-light btn-rounded disabled');
+      $(that).addClass('badge-danger');
+      $(row_id).find('.update_status_enabled').removeClass('badge-warning');
+      $(row_id).find('.update_status_enabled').addClass('btn btn-light btn-rounded disabled');
+    }, errorMessage);
+  });
+  $('.update_status_enabled').on('click', function () {
+    var id = $(this).data('id');
+    var status = 1;
+    var url = $('#update_status_brand').val();
+    var params = {
+      'id': id,
+      'status': status
+    };
+    var errorMessage = 'Update brand info failed.';
+    var that = $(this);
+    var row_id = $(this).closest('td');
+    (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
+      toastr.success('Update brand info successfull.');
+      $(that).removeClass('btn btn-light btn-rounded disabled');
+      $(that).addClass('badge-warning');
+      $(row_id).find('.update_status_disabled').removeClass('badge-danger');
+      $(row_id).find('.update_status_disabled').addClass('btn btn-light btn-rounded disabled');
+    }, errorMessage);
+  });
+  $('#buttonSearch').on('click', function () {
+    var url = $('#search_brand').val();
+    var params = {
+      'name': $('#search_brand_name').val()
+    };
+    (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
+      console.log(res.data);
+      if (res.data.html) {
+        $('.brand_list').html(res.data.html);
+        $("#sortable-table-1").tablesort();
+      } else {
+        toastr.error('Brand is not exist.');
+        return;
+      }
+      toastr.success('Search updated');
+    }, 'Something error!!!');
+  });
+});
+
+/***/ }),
+
+/***/ "./Packages/Server/Resources/assets/sass/app.scss":
+/*!********************************************************!*\
+  !*** ./Packages/Server/Resources/assets/sass/app.scss ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./Packages/Server/Resources/assets/sass/modal/modal.scss":
+/*!****************************************************************!*\
+  !*** ./Packages/Server/Resources/assets/sass/modal/modal.scss ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./Packages/Server/Resources/assets/sass/auth/login.scss":
+/*!***************************************************************!*\
+  !*** ./Packages/Server/Resources/assets/sass/auth/login.scss ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./node_modules/process/browser.js":
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
 /***/ ((module) => {
 
 // shim for using process in browser
@@ -2248,154 +2392,10 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./Packages/Server/Resources/assets/js/app.js":
-/*!****************************************************!*\
-  !*** ./Packages/Server/Resources/assets/js/app.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ajaxWithCsrf": () => (/* binding */ ajaxWithCsrf)
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./Packages/Server/node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
-function ajaxWithCsrf(url, params, callback, errorMessage) {
-  var config = {
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    withCredentials: true
-  };
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, params, config).then(function (res) {
-    callback(res);
-  })["catch"](function () {
-    axiosErrorHandler(errorMessage);
-  });
-}
-function axiosErrorHandler(errorMessage) {
-  toastr.error(errorMessage);
-}
-
-/***/ }),
-
-/***/ "./Packages/Server/Resources/assets/js/brand/brand.js":
-/*!************************************************************!*\
-  !*** ./Packages/Server/Resources/assets/js/brand/brand.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./Packages/Server/Resources/assets/js/app.js");
-
-toastr.options.timeOut = 5000;
-$(document).ready(function () {
-  $("#sortable-table-1").tablesort();
-  $('.update_status_disabled').on('click', function () {
-    var id = $(this).data('id');
-    var status = 0;
-    var url = $('#update_status_brand').val();
-    var params = {
-      'id': id,
-      'status': status
-    };
-    var errorMessage = 'Update brand info failed.';
-    var that = $(this);
-    var row_id = $(this).closest('td');
-    (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
-      toastr.success('Update brand info successfull.');
-      $(that).removeClass('btn btn-light btn-rounded disabled');
-      $(that).addClass('badge-danger');
-      $(row_id).find('.update_status_enabled').removeClass('badge-warning');
-      $(row_id).find('.update_status_enabled').addClass('btn btn-light btn-rounded disabled');
-    }, errorMessage);
-  });
-  $('.update_status_enabled').on('click', function () {
-    var id = $(this).data('id');
-    var status = 1;
-    var url = $('#update_status_brand').val();
-    var params = {
-      'id': id,
-      'status': status
-    };
-    var errorMessage = 'Update brand info failed.';
-    var that = $(this);
-    var row_id = $(this).closest('td');
-    (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
-      toastr.success('Update brand info successfull.');
-      $(that).removeClass('btn btn-light btn-rounded disabled');
-      $(that).addClass('badge-warning');
-      $(row_id).find('.update_status_disabled').removeClass('badge-danger');
-      $(row_id).find('.update_status_disabled').addClass('btn btn-light btn-rounded disabled');
-    }, errorMessage);
-  });
-  $('#buttonSearch').on('click', function () {
-    var url = $('#search_brand').val();
-    var params = {
-      'name': $('#search_brand_name').val()
-    };
-    (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
-      console.log(res.data);
-      if (res.data.html) {
-        $('.brand_list').html(res.data.html);
-        $("#sortable-table-1").tablesort();
-      } else {
-        toastr.error('Brand is not exist.');
-        return;
-      }
-      toastr.success('Search updated');
-    }, 'Something error!!!');
-  });
-});
-
-/***/ }),
-
-/***/ "./Packages/Server/Resources/assets/sass/app.scss":
-/*!********************************************************!*\
-  !*** ./Packages/Server/Resources/assets/sass/app.scss ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./Packages/Server/Resources/assets/sass/modal/modal.scss":
-/*!****************************************************************!*\
-  !*** ./Packages/Server/Resources/assets/sass/modal/modal.scss ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./Packages/Server/Resources/assets/sass/auth/login.scss":
-/*!***************************************************************!*\
-  !*** ./Packages/Server/Resources/assets/sass/auth/login.scss ***!
-  \***************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./Packages/Server/node_modules/axios/package.json":
-/*!*********************************************************!*\
-  !*** ./Packages/Server/node_modules/axios/package.json ***!
-  \*********************************************************/
+/***/ "./node_modules/axios/package.json":
+/*!*****************************************!*\
+  !*** ./node_modules/axios/package.json ***!
+  \*****************************************/
 /***/ ((module) => {
 
 "use strict";

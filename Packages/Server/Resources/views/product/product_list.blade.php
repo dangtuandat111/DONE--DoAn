@@ -12,6 +12,7 @@
                 <th class="sortStyle unsortStyle">Thumbnail</th>
                 <th class="sortStyle unsortStyle">Status</th>
                 <th class="sortStyle unsortStyle">More Info</th>
+                <th class="sortStyle unsortStyle">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -31,6 +32,9 @@
                     <td>
                         <button class="add btn btn-icon text-primary expand-button bg-transparent align-content-center"><i
                                 class="icon-circle-plus"></i></button>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="">Edit</a>
                     </td>
                 </tr>
                 <tr class="product_detail expandable-table d-none">
@@ -95,7 +99,6 @@
                     </td>
 
                 </tr>
-                <tr class="property-table d-none"></tr>
                 <?php $stt++ ?>
             @endforeach
             </tbody>

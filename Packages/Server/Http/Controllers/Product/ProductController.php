@@ -36,7 +36,11 @@ class ProductController extends Controller {
     }
 
      public function createProduct(Request $request) {
+        if ($request->isMethod('post')) {
 
+        } else {
+            return view('server::product.create_product')->with($this->product_service->getData());
+        }
      }
 
     public function formatData($product_data) {

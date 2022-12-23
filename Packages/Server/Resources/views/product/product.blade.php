@@ -49,26 +49,6 @@
                                 </select>
                             </div>
 
-{{--                            <div class="form-group col-2 padding-r-15 d-flex align-items-center">--}}
-{{--                                <select name="search_option_group" aria-controls="order-listing" class="custom-select custom-select-sm form-control h-100 border-radius-15">--}}
-{{--                                    <option value="" disabled selected>Select option</option>--}}
-{{--                                    @foreach($option_data as $option_data_item)--}}
-{{--                                        <option value="{{ $option_data_item->id }}">{{ $option_data_item->name }}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                    <option value="-1">All</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-
-{{--                            <div class="form-group col-2 padding-r-15 d-flex align-items-center">--}}
-{{--                                <select name="search_property_group" aria-controls="order-listing" class="custom-select custom-select-sm form-control h-100 border-radius-15">--}}
-{{--                                    <option value="" disabled selected>Select property</option>--}}
-{{--                                    @foreach($property_data as $property_data_item)--}}
-{{--                                        <option value="{{ $property_data_item->id }}">{{ $property_data_item->name }}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                    <option value="-1">All</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-
                             <div class="form-group padding-r-15">
                                 <div class="input-group">
                                     <input type="text" class="form-control border-radius-15" id="search_product_name" placeholder="Search by property name or property group name" name="search">

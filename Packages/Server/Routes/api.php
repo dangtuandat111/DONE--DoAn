@@ -54,6 +54,9 @@ Route::group([], function() {
         });
         Route::prefix('/product')->group(function() {
             Route::post('/search', 'Product\ProductController@searchProduct')->name('server.api.product.search');
+            Route::post('/createProduct', 'Product\ProductController@createProduct')->name('server.api.product.create');
+            Route::post('/createProductVariant', 'Product\ProductController@createProductVariant')->name('server.api.product.variant.create');
+            Route::post('/createProductVariant', 'Product\ProductController@createProductVariant')->name('server.api.product.variant.create');
         });
     }));
 });
