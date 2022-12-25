@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('client')->group(function() {
-    Route::get('/', 'ClientController@index');
+Route::prefix('customer')->group(function() {
+    Route::get('/', 'CustomerController@home');
 });

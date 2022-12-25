@@ -81,6 +81,8 @@ Route::prefix('admin')->group(function() {
                     Route::get('', 'Product\ProductController@getProduct')->name('server.product.get');
                     Route::get('/createProduct', 'Product\ProductController@createProduct')->name('server.product.create');
                     Route::get('/createProductVariant', 'Product\ProductController@createProductVariant')->name('server.product.variant.create');
+                    Route::get('/editProduct', 'Product\ProductController@editProduct')->name('server.product.edit');
+                    Route::get('/editProductVariant', 'Product\ProductController@editProductVariant')->name('server.product.variant.edit');
                 });
             }));
         });

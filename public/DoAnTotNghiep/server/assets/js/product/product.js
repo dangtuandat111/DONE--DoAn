@@ -2395,6 +2395,7 @@ function getSearchProduct() {
       appendResponse(res, function () {
         $("#product-table").tablesort();
         expandRow();
+        getProductVariant();
       });
     } else {
       toastr.error('Property group is not exist.');
@@ -2416,6 +2417,35 @@ function expandRow() {
       $(this_detail).addClass('d-none');
     }
   });
+}
+function getProductVariant() {
+  $(document).find('tr').not(':first').on('dblclick', function () {
+    var product_id = $(this).data('id');
+    var currentModal = $('#productVariant');
+    getProductVariantData(product_id, function () {
+      var optionModal = {};
+      $(currentModal).modal(optionModal);
+      $(currentModal).modal('show');
+      $(currentModal).modal('hide');
+    });
+  });
+  function getProductVariantData(product_id, callback) {
+    var url = $('#get_product_variant').val();
+    var params = {
+      'id': product_id
+    };
+    (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
+      if (res.data.status === true) {
+        $('#productVariant .card-body').html('');
+        $('#productVariant .card-body').append(res.data.html);
+      } else {
+        toastr.error(errorMessage + 'Customer is not exist.');
+      }
+    }, 'Something error!!!');
+    if (callback) {
+      callback();
+    }
+  }
 }
 })();
 

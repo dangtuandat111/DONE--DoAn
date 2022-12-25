@@ -15,7 +15,6 @@
                         <h4 class="card-title">Product List</h4>
                         <div class="new-action float-right" style="padding-top: 13px; margin-bottom: 1.5rem;">
                             <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.product.create') }}">Create new Product</a>
-                            <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.product.variant.create') }}">Create new Product Variant</a>
                         </div>
                         <div class="filter-area col-12 col-md-12 col-sm-12 pl-0">
                             <div class="form-group col-2 padding-r-15 d-flex align-items-center">
@@ -67,9 +66,32 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="productVariant" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-header flex-row-reverse ">
+                            <h4 class="modal-title">
+                                <div style="float:right">List product variant</div><br>
+                            </h4>
+                        </div>
+                        <div class="col-md-12 col-xl-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-default close-button" style="text-align:right" data-dismiss="modal">BACK TO PAGE</button>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- content-wrapper ends -->
     <input type="hidden" id="search_product" value="{{ route('server.api.product.search') }}">
+    <input type="hidden" id="get_product_variant" value="{{ route('server.api.product.variant') }}">
     <!-- input hidden -->
 @endsection
 

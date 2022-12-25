@@ -28,6 +28,7 @@ function getSearchProduct(page = 1) {
             appendResponse(res, () => {
                 $("#product-table").tablesort();
                 expandRow();
+                getProductVariant();
             })
         } else {
             toastr.error('Property group is not exist.');
@@ -53,3 +54,36 @@ function expandRow() {
         }
     })
 }
+
+function getProductVariant() {
+    $(document).find('tr').not(':first').on('dblclick', function () {
+        let product_id = $(this).data('id');
+        let currentModal = $('#productVariant');
+
+        getProductVariantData(product_id, () => {
+            let optionModal = {}
+            $(currentModal).modal(optionModal);
+            $(currentModal).modal('show');
+            $(currentModal).modal('hide');
+        })
+    });
+
+    function getProductVariantData(product_id, callback) {
+        let url = $('#get_product_variant').val();
+        let params = {
+            'id': product_id
+        }
+
+        ajaxWithCsrf(url, params, function processResponse(res) {
+            if (res.data.status === true) {
+                $('#productVariant .card-body').html('');
+                $('#productVariant .card-body').append(res.data.html);
+            } else {
+                toastr.error(errorMessage + 'Customer is not exist.')
+            }
+        }, 'Something error!!!')
+        if (callback) { callback(); }
+    }
+}
+
+

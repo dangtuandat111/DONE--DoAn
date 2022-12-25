@@ -20,4 +20,9 @@ class ProductVariantRepository extends BaseRepository
     {
         return (DB::table('product_variant')->where('id', $id)->get());
     }
+
+    public function getInfoByProduct(int $id)
+    {
+        return (DB::table('product_variant')->where('id_product', $id)->get());
+    }
 }

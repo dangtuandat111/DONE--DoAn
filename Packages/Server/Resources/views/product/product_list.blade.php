@@ -9,7 +9,6 @@
                 <th class="sortStyle unsortStyle">Price</th>
                 <th class="sortStyle unsortStyle">Created at</th>
                 <th class="sortStyle unsortStyle">Updated at</th>
-                <th class="sortStyle unsortStyle">Thumbnail</th>
                 <th class="sortStyle unsortStyle">Status</th>
                 <th class="sortStyle unsortStyle">More Info</th>
                 <th class="sortStyle unsortStyle">Action</th>
@@ -18,23 +17,20 @@
             <tbody>
             <?php $stt = 1 ?>
             @foreach ($product_data as $product_data_item)
-                <tr>
+                <tr data-id="{{ $product_data_item['id'] }}">
                     <td>{{ $stt }}</td>
                     <td>{{ $product_data_item['name'] }}</td>
                     <td>{{ $product_data_item['slug'] }}</td>
                     <td>{{ $product_data_item['price'] }}$</td>
                     <td>{{ $product_data_item['c_at'] }}</td>
                     <td>{{ $product_data_item['u_at'] }}</td>
-                    <td>
-                        <img class="@if(!$product_data_item['img']) d-none @endif" src="{{ asset($product_data_item['img']) }}" alt="">
-                    </td>
                     <td>{{ $product_data_item['status'] }}</td>
                     <td>
                         <button class="add btn btn-icon text-primary expand-button bg-transparent align-content-center"><i
                                 class="icon-circle-plus"></i></button>
                     </td>
                     <td>
-                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="">Edit</a>
+                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.product.edit', ['id' => $product_data_item['id']]) }}">Edit</a>
                     </td>
                 </tr>
                 <tr class="product_detail expandable-table d-none">
@@ -68,7 +64,7 @@
                                             <h6>
                                                 {{ $product_data_item->e_at }}
                                             </h6>
-                             `           </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="expanded-table-normal-cell">
@@ -76,13 +72,8 @@
                                 </div>
                                 <div class="expanded-table-normal-cell">
                                     <div class="me-2 mb-4">
-                                        <p>Feature List</p>
                                         <ul class="two-column-order-list">
-                                            @foreach($product_data_item['feature_list'] as $feature)
-                                                <li>
-                                                    <h6>{{ $feature }}</h6>
-                                                </li>
-                                            @endforeach
+                                            {!! $product_data_item['feature_list'] !!}
                                         </ul>
                                     </div>
                                 </div>

@@ -23,6 +23,7 @@ mix
 
 mix
     .sass(server_resources_custom_path + '/sass/app.scss', server_public_path + '/css/app.css')
+    .sass(server_resources_custom_path + '/sass/product.scss', server_public_path + '/css/product.css')
     .sass(server_resources_custom_path + '/sass/modal/modal.scss', server_public_path + '/css/modal/modal.css')
     .sass(server_resources_custom_path + '/sass/auth/login.scss', server_public_path + '/css/auth/login.css')
 
@@ -43,6 +44,9 @@ mix
     .js(server_resources_custom_path + '/js/property/create_property.js', server_public_path + '/assets/js/property/create_property.js')
 
     .js(server_resources_custom_path + '/js/product/product.js', server_public_path + '/assets/js/product/product.js')
+    .js(server_resources_custom_path + '/js/product/product_create.js', server_public_path + '/assets/js/product/product_create.js')
+    .js(server_resources_custom_path + '/js/product/edit_product.js', server_public_path + '/assets/js/product/edit_product.js')
+    .js(server_resources_custom_path + '/js/product/edit_product_variant.js', server_public_path + '/assets/js/product/edit_product_variant.js')
 
     .js(server_resources_custom_path + '/js/user/user.js', server_public_path + '/assets/js/user/user.js')
     .js(server_resources_custom_path + '/js/tablesort.js', server_public_path + '/js/tablesort.js')

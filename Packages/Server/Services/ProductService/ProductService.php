@@ -2,17 +2,20 @@
 
 namespace Packages\Server\Services\ProductService;
 
+use Illuminate\Support\Facades\DB;
 use Packages\Server\Entities\Model\Product;
 use Packages\Server\Repository\Brand\BrandRepository;
 use Packages\Server\Repository\Category\CategoryRepository;
+use Packages\Server\Repository\Option\OptionRepository;
 use Packages\Server\Repository\OptionGroup\OptionGroupRepository;
 use Packages\Server\Repository\Product\ProductRepository;
 use Packages\Server\Repository\Product\ProductVariantRepository;
+use Packages\Server\Repository\Property\PropertyRepository;
 use Packages\Server\Repository\PropertyGroup\PropertyGroupRepository;
 
 class ProductService {
     public const selectedNavItem = 'Product';
-    public $product, $productVariant, $brand, $category, $property, $option;
+    public $product, $productVariant, $brand, $category, $property, $option, $propertyGroup, $optionGroup;
 
     public function __construct(
         ProductRepository $productRepository,
@@ -20,15 +23,19 @@ class ProductService {
         BrandRepository $brandRepository,
         PropertyGroupRepository $propertyGroupRepository,
         CategoryRepository $categoryRepository,
-        OptionGroupRepository $optionGroupRepository
+        OptionGroupRepository $optionGroupRepository,
+        OptionRepository $optionRepository,
+        PropertyRepository $propertyRepository
     )
     {
         $this->product = $productRepository;
         $this->productVariant = $productVariantRepository;
         $this->brand = $brandRepository;
-        $this->property = $propertyGroupRepository;
+        $this->propertyGroup = $propertyGroupRepository;
         $this->category = $categoryRepository;
-        $this->option = $optionGroupRepository;
+        $this->optionGroup = $optionGroupRepository;
+        $this->property = $propertyRepository;
+        $this->option = $optionRepository;
     }
 
     public function getData() {
@@ -37,6 +44,148 @@ class ProductService {
             'brand_data' => $this->brand->getAll(),
             'category_data' => $this->category->getAll(),
         ];
+    }
+
+    public function getProductData($id) {
+        return $this->product->getInfo($id);
+    }
+
+    public function getExtendData() {
+        return [
+            'property_group_data' => $this->propertyGroup->getAll(),
+            'property_data' => $this->property->getAll(),
+            'option_group_data' => $this->optionGroup->getAll(),
+            'option_data' => $this->option->getAll(),
+        ];
+    }
+
+    public function getAllProduct() {
+        return $this->product->getAll();
+    }
+
+    public function getAllProductVariant($id) {
+        $product_data = $this->productVariant->getInfoByProduct($id);
+
+        $product_variant_size = [];
+        foreach ($product_data as $product_data_item) {
+            $product_variant_size[] = DB::table('product_variant_property')
+                ->join('property', 'property.id', '=', 'product_variant_property.id_property')
+                ->where([
+                    ['property.id_property_group', '=', 5],
+                    ['product_variant_property.id_product_variant', '=', $product_data_item->id],
+                ])
+                ->get('value')[0];
+        }
+
+        return [$this->productVariant->getInfoByProduct($id), $this->product->getInfo($id), $product_variant_size];
+    }
+
+
+
+    public function getExtraPVData($id) {
+        $product_variant_option = DB::table('product_variant_option')->where('id_product_variant', $id)->get('id_option');
+        $product_variant_property = DB::table('product_variant_property')->where('id_product_variant', $id)->get('id_property');
+        return [$product_variant_option, $product_variant_property];
+    }
+
+    public function updatePV() {
+        DB::beginTransaction();
+
+        try {
+            $product_id = DB::table('product')->get('id')[0];
+
+            $product_variant_params['id_product'] = $product_id;
+            $product_variant_id = DB::table('product_variant')->insertGetId($product_variant_params);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            logger()->error($e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function creatNewProduct($product_params, $product_variant_params, $imageName, $property, $option) {
+        DB::beginTransaction();
+
+        try {
+            $product_id = DB::table('product')->insertGetId($product_params);
+
+            $product_variant_params['id_product'] = $product_id;
+            $product_variant_id = DB::table('product_variant')->insertGetId($product_variant_params);
+
+            foreach ($imageName as $imgName) {
+                DB::table('product_variant_image')->insert([
+                    'id_product_variant' => $product_variant_id,
+                    'name' => $imgName
+                ]);
+            }
+
+            foreach($property as $property_item) {
+                DB::table('product_variant_property')->insert([
+                    'id_product_variant' => $product_variant_id,
+                    'id_property' => $property_item
+                ]);
+            }
+
+            foreach($option as $option_item) {
+                DB::table('product_variant_option')->insert([
+                    'id_product_variant' => $product_variant_id,
+                    'id_option' => $option_item,
+                    'status' => 1
+                ]);
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            logger()->error($e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function creatNewProductVariant($product_variant_params, $imageName, $property, $option) {
+        DB::beginTransaction();
+
+        try {
+            $product_variant_id = DB::table('product_variant')->insertGetId($product_variant_params);
+
+            foreach ($imageName as $imgName) {
+                DB::table('product_variant_image')->insert([
+                    'id_product_variant' => $product_variant_id,
+                    'name' => $imgName
+                ]);
+            }
+
+            foreach($property as $property_item) {
+                DB::table('product_variant_property')->insert([
+                    'id_product_variant' => $product_variant_id,
+                    'id_property' => $property_item
+                ]);
+            }
+
+            foreach($option as $option_item) {
+                DB::table('product_variant_option')->insert([
+                    'id_product_variant' => $product_variant_id,
+                    'id_option' => $option_item,
+                    'status' => 1
+                ]);
+            }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            logger()->error($e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function productUpdate($id, $attribute) {
+        $this->product->update($id, $attribute);
+        return true;
     }
 
     public function searchProduct($request) {

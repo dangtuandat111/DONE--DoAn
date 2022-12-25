@@ -2172,6 +2172,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./Packages/Server/Resources/assets/sass/product.scss":
+/*!************************************************************!*\
+  !*** ./Packages/Server/Resources/assets/sass/product.scss ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./Packages/Server/Resources/assets/sass/modal/modal.scss":
 /*!****************************************************************!*\
   !*** ./Packages/Server/Resources/assets/sass/modal/modal.scss ***!
@@ -2516,6 +2529,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 			"/DoAnTotNghiep/server/assets/js/brand/brand": 0,
 /******/ 			"DoAnTotNghiep/server/css/auth/login": 0,
 /******/ 			"DoAnTotNghiep/server/css/modal/modal": 0,
+/******/ 			"DoAnTotNghiep/server/css/product": 0,
 /******/ 			"DoAnTotNghiep/server/css/app": 0
 /******/ 		};
 /******/ 		
@@ -2566,10 +2580,11 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/js/brand/brand.js")))
-/******/ 	__webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/sass/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/sass/modal/modal.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/sass/auth/login.scss")))
+/******/ 	__webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/product","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/js/brand/brand.js")))
+/******/ 	__webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/product","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/product","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/sass/product.scss")))
+/******/ 	__webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/product","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/sass/modal/modal.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["DoAnTotNghiep/server/css/auth/login","DoAnTotNghiep/server/css/modal/modal","DoAnTotNghiep/server/css/product","DoAnTotNghiep/server/css/app"], () => (__webpack_require__("./Packages/Server/Resources/assets/sass/auth/login.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

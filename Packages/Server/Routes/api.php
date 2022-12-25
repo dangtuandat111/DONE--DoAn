@@ -26,7 +26,7 @@ Route::group([], function() {
     Route::group(['prefix' => 'customer'], function () {
         Route::post('/update_status', 'Customer\CustomerController@updateStatus')->name('server.api.customer.update');
         Route::post('/search', 'Customer\CustomerController@searchCustomer')->name('server.api.customer.search');
-        Route::post('/detail', 'Customer\CustomerController@searchCustomer')->name('server.api.customer.detail');
+        Route::post('/detail', 'Customer\CustomerController@getDetail')->name('server.api.customer.detail');
         Route::post('/resetPass', 'Customer\CustomerController@resetPass')->name('server.customer.edit.reset_pass');
         Route::post('/forceLogin', 'Customer\CustomerController@forceLogin')->name('server.customer.edit.logout');
     });
@@ -52,11 +52,12 @@ Route::group([], function() {
             Route::post('/searchPropertyGroup', 'Property\PropertyController@searchPropertyGroup')->name('server.api.property.group.search');
             Route::post('/searchProperty', 'Property\PropertyController@searchProperty')->name('server.api.property.search');
         });
-        Route::prefix('/product')->group(function() {
+        Route::prefix('/')->group(function() {
             Route::post('/search', 'Product\ProductController@searchProduct')->name('server.api.product.search');
             Route::post('/createProduct', 'Product\ProductController@createProduct')->name('server.api.product.create');
-            Route::post('/createProductVariant', 'Product\ProductController@createProductVariant')->name('server.api.product.variant.create');
-            Route::post('/createProductVariant', 'Product\ProductController@createProductVariant')->name('server.api.product.variant.create');
+            Route::post('/editProduct', 'Product\ProductController@editProduct')->name('server.api.product.edit');
+            Route::post('/getProductVariant', 'Product\ProductController@getProductVariantList')->name('server.api.product.variant');
+            Route::post('/editProductVariant', 'Product\ProductController@editProductVariant')->name('server.api.product.variant.edit');
         });
     }));
 });

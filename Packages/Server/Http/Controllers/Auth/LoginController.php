@@ -27,7 +27,8 @@ class LoginController extends Controller {
                 return back()->withErrors('Message Error: Login unsuccessful. Please try again later.')->withInput();
             }
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            logger()->error($e->getMessage());
+            return back()->withErrors('Message Error: Login unsuccessful. Please try again later.')->withInput();
         }
     }
 
