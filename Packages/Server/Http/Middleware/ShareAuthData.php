@@ -18,7 +18,12 @@ class ShareAuthData
     {
         if (\Auth::guard('admin')->id()) {
             $admin_data = AdminRepository::getInfo(\Auth::guard('admin')->id())[0];
-            $admin_data->avatar = 'DoAnTotNghiep/server/assets/images/user/' . $admin_data->avatar;
+            if ($admin_data->avatar) {
+                $admin_data->avatar = 'DoAnTotNghiep/server/assets/images/' . $admin_data->avatar;
+            } else {
+                $admin_data->avatar = 'DoAnTotNghiep/server/assets/images/admin_default.png';
+            }
+
             \View::share('admin_data', $admin_data);
         }
 

@@ -2412,9 +2412,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./Packages/Server/Resources/assets/js/app.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic_build_ckeditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic/build/ckeditor */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
 /* harmony import */ var _ckeditor_ckeditor5_build_classic_build_ckeditor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic_build_ckeditor__WEBPACK_IMPORTED_MODULE_1__);
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 toastr.options.timeOut = 5000;
-var errorMessage = 'Message Error: ';
+var errorMessage = 'Lỗi:';
 
 $(document).ready(function () {
   _ckeditor_ckeditor5_build_classic_build_ckeditor__WEBPACK_IMPORTED_MODULE_1___default().create(document.getElementById('product_variant_description'), {
@@ -2456,7 +2459,7 @@ $(document).ready(function () {
         "class": 'ck-heading_heading6'
       }]
     },
-    placeholder: 'Describe your product',
+    placeholder: 'Thêm mô tả biến thể sản phẩm',
     fontSize: {
       options: [10, 12, 14, 'default', 18, 20, 22],
       supportAllValues: true
@@ -2464,25 +2467,43 @@ $(document).ready(function () {
   })["catch"](function (error) {
     console.log("error", error);
   });
+  uploadMutipleImage();
 });
 $('.btn-submit').on('click', function (e) {
   var status = true;
   if (!$('#product_variant_count').val()) {
-    toastr.error(errorMessage + 'Fill count to continue');
+    toastr.error(errorMessage + 'Thêm số lượng để tiếp tục');
     status = false;
+  }
+  var property_element = $('[id^="product_variant_property_"]');
+  var _iterator = _createForOfIteratorHelper(property_element),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var pe = _step.value;
+      if (!$(pe).val() || $(pe).val() < 0) {
+        e.preventDefault();
+        toastr.error(errorMessage + 'Chọn các thuộc tính để tiếp tục.');
+        return;
+      }
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
   }
   if ($('#product_variant_discount').is(':checked')) {
     if (!$('#product_variant_discount_percent').val() || !isNumeric($('#product_variant_discount_percent').val())) {
       if (parseFloat($('#product_variant_discount_percent').val()) >= 100 || parseFloat($('#product_variant_discount_percent').val()) < 0) {
-        toastr.error(errorMessage + 'Fill valid discount percent to continue.');
+        toastr.error(errorMessage + 'Giảm giá (%) không hợp lệ.');
         status = false;
       }
     } else if (!$('#product_variant_start_discount').val() || !$('#product_variant_end_discount').val()) {
-      toastr.error(errorMessage + 'Select discount time to continue');
+      toastr.error(errorMessage + 'Chọn thời gian bắt đầu để tiếp tục');
       status = false;
     } else if (isNumeric($('#product_price').val())) {
       if (parseFloat($('#product_variant_discount_percent').val()) >= 100 || parseFloat($('#product_variant_discount_percent').val()) < 0) {
-        toastr.error(errorMessage + 'Fill valid discount percent to continue.');
+        toastr.error(errorMessage + 'Chọn thời gian kết thúc để tiếp tục.');
         status = false;
       }
     }
@@ -2504,6 +2525,70 @@ $('#product_variant_discount').change(function () {
 function isNumeric(value) {
   return /^-?\d*(\.\d+)?$/.test(value);
 }
+function uploadMutipleImage() {
+  $('.dandev_insert_attach').click(function () {
+    if ($('.dandev_attach_view').children().length >= 6) {
+      return;
+    }
+    if ($('.list_attach').hasClass('show-btn') === false) {
+      $('.list_attach').addClass('show-btn');
+    }
+    var _lastimg = $('.dandev_attach_view li').last().find('input[type="file"]').val();
+    var key = $('.dandev_attach_view li').last().find('input[type="file"]').attr('data-key');
+    if (_lastimg != '' || key) {
+      var d = new Date();
+      var _time = d.getTime();
+      var _html = '<li id="li_files_' + _time + '" class="li_file_hide">';
+      _html += '<div class="img-wrap">';
+      _html += '<span class="close" onclick="DelImg(this)">×</span>';
+      _html += ' <div class="img-wrap-box"></div>';
+      _html += '</div>';
+      _html += '<div class="' + _time + '">';
+      _html += '<input type="file" class="hidden"  onchange="uploadImg(this)" id="files_' + _time + '" name="files_' + _time + '"  />';
+      _html += '</div>';
+      _html += '</li>';
+      $('.dandev_attach_view').append(_html);
+      $('.dandev_attach_view li').last().find('input[type="file"]').click();
+      if ($('.dandev_attach_view').children().length >= 6) {
+        $('.list_attach').find('.dandev_insert_attach').addClass('d-none');
+      }
+    } else {
+      if (_lastimg == '') {
+        $('.dandev_attach_view li').last().find('input[type="file"]').click();
+      } else {
+        if ($('.list_attach').hasClass('show-btn') === true) {
+          $('.list_attach').removeClass('show-btn');
+        }
+      }
+    }
+  });
+}
+window.DelImg = function (el) {
+  $(el).closest('li').remove();
+  if ($('.dandev_attach_view').children().length <= 5) {
+    $('.list_attach').find('.dandev_insert_attach').removeClass('d-none');
+  }
+};
+window.uploadImg = function (el) {
+  var file_data = $(el).prop('files')[0];
+  var type = file_data.type;
+  var fileToLoad = file_data;
+  var fileReader = new FileReader();
+  fileReader.onload = function (fileLoadedEvent) {
+    var srcData = fileLoadedEvent.target.result;
+    var newImage = document.createElement('img');
+    newImage.src = srcData;
+    var _li = $(el).closest('li');
+    if (_li.hasClass('li_file_hide')) {
+      _li.removeClass('li_file_hide');
+    }
+    _li.find('.img-wrap-box').append(newImage.outerHTML);
+  };
+  fileReader.onerror = function (e) {
+    console.log(e);
+  };
+  fileReader.readAsDataURL(fileToLoad);
+};
 })();
 
 /******/ })()

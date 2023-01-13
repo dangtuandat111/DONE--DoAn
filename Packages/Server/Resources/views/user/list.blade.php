@@ -2,13 +2,13 @@
     <table class="table table-striped" id="sortable-table-1">
         <thead>
         <tr>
-            <th class="pr-0">STT</th>
-            <th class="sortStyle unsortStyle">Name<i class="ti-angle-down"></i></th>
-            <th class="sortStyle unsortStyle">Image</th>
-            <th class="sortStyle unsortStyle pr-0">Email<i class="ti-angle-down"></i></th>
-            <th class="sortStyle unsortStyle">Phone number<i class="ti-angle-down"></i></th>
-            <th class="sortStyle unsortStyle">Status</th>
-            <th class="sortStyle unsortStyle">Action</th>
+            <th class="pr-0">#</th>
+            <th class="sortStyle unsortStyle">Tên tài khoản<i class="ti-angle-down"></i></th>
+            <th class="sortStyle unsortStyle">Ảnh đại diện</th>
+            <th class="sortStyle unsortStyle pr-0">Địa chỉ email<i class="ti-angle-down"></i></th>
+            <th class="sortStyle unsortStyle">Số điện thoại<i class="ti-angle-down"></i></th>
+            <th class="sortStyle unsortStyle">Tình trạng</th>
+            <th class="sortStyle unsortStyle">Hành động thêm</th>
         </tr>
         </thead>
         <tbody>
@@ -23,13 +23,13 @@
                 <td class="pr-0">{{ $user_data_item->email }}</td>
                 <td class="mw-100px wrap-content">{{ $user_data_item->phone_number }}</td>
                 <td>
-                    <label class="badge badge-warning @if ($user_data_item->status !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_enabled" data-id="{{ $user_data_item->id }}">Enabled</label>
-                    <label class="badge badge-danger @if ($user_data_item->status == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_disabled" data-id="{{ $user_data_item->id }}">Disabled</label>
+                    <label class="badge badge-warning @if ($user_data_item->status !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_enabled" data-id="{{ $user_data_item->id }}">Khả dụng</label>
+                    <label class="badge badge-danger @if ($user_data_item->status == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_disabled" data-id="{{ $user_data_item->id }}">Không khả dụng</label>
                 </td>
                 <td>
                     <label class="badge badge-info @if ($user_data_item->role == 1) disabled @endif update_admin_role" data-id="{{ $user_data_item->id }}">
                         @if ($user_data_item->role == 0)
-                            Employee / Promote
+                            Nhân viên / Cấp quyền
                         @else
                             Admin
                         @endif

@@ -3,7 +3,7 @@
     <div class="modal-content">
         <div class="modal-header flex-row-reverse ">
             <h4 class="modal-title">
-                <div style="float:right">More about</div><br>
+                <div style="float:right">Thông tin về:</div><br>
                 <div class="modal-name">Joe</div>
             </h4>
         </div>
@@ -27,11 +27,6 @@
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="activity-tab" data-toggle="tab" data-target="#activity"
-                                        type="button" role="tab" aria-controls="activity" aria-selected="false">Activity
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="contact-tab" data-toggle="tab" data-target="#contact"
                                         type="button" role="tab" aria-controls="contact" aria-selected="false">Contact
                                 </button>
@@ -42,50 +37,37 @@
                                 <div class="media">
                                     <div class="media-body">
                                         <h4 class="mt-0 d-flex justify-content-between">
-                                            <div class="fw-bold">Name:</div>
+                                            <div class="fw-bold">Tên người dùng:</div>
                                             <div class="modal-name">John Doe</div>
                                         </h4>
-                                        <p class="modal-description">Description Info</p>
+                                        <p class="modal-description">Mô tả</p>
                                         <div class="d-flex justify-content-between">
                                             <div class="fw-bold">Address:</div>
                                             <div class="modal-address">Bac Tu Liem, Ha Noi</div>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <div class="fw-bold">Created at:</div>
+                                            <div class="fw-bold">Thời gian tạo</div>
                                             <div class="modal-c_at">20-10-2022</div>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <div class="fw-bold">Updated at:</div>
+                                            <div class="fw-bold">Thời gian cập nhật</div>
                                             <div class="modal-u_at">20-10-2022</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
-                                <div class="empty-state">
-                                    <div class="empty-state__content">
-                                        <div class="empty-state__icon">
-                                            <img src="{{ asset('DoAnTotNghiep/server/assets/images/info_default.png') }}" alt="">
-                                        </div>
-                                        <div class="empty-state__message">No records has been added yet.</div>
-                                        <div class="empty-state__help">
-                                            Be patience waiting...
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <h2>
-                                    Customer contact
+                                    Thông tin liên lạc:
                                 </h2>
                                 <div class="contac-info">
                                     <p>
                                         <i class="ti-headphone-alt text-info padding-r-15"></i>
-                                        <label for="Phone Number" style="font-size: 16px">Phone Number: </label><span class="modal-phone-number pl-1">+123456789</span>
+                                        <label for="Phone Number" style="font-size: 16px">Số điện thoại: </label><span class="modal-phone-number pl-1">+123456789</span>
                                     </p>
                                     <p>
                                         <i class="ti-email text-success padding-r-15"></i>
-                                        <label for="Email" style="font-size: 16px">Email: </label><span class="modal-email pl-1">email@email.com</span>
+                                        <label for="Email" style="font-size: 16px">Địa chỉ email </label><span class="modal-email pl-1">email@email.com</span>
                                     </p>
                                 </div>
                             </div>
@@ -94,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-default" style="text-align:right" data-dismiss="modal">I've heard enough. BACK TO PAGE</button>
+        <button type="button" class="btn btn-default" style="text-align:right" data-dismiss="modal">Trở lại trang.</button>
     </div>
 </div>
 </div>

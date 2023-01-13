@@ -71,6 +71,9 @@ class ProductController extends Controller {
                     'updated_at' => Carbon::now()
                 ];
 
+                $imageName = $this->imageUploadPost($request, 'product_image');
+                $product_params['thumbnail'] = $imageName;
+
                 if ($request->get('product_discount', 'false') === "on") {
                     $product_params['discount'] = $request->get('product_discount_percent', 0);
                     $product_params['start_at'] = $request->get('product_start_discount', 0);
@@ -187,16 +190,84 @@ class ProductController extends Controller {
     }
 
     public function editProductVariant(Request $request) {
+        $list_image_name = [];
         if ($request->isMethod('post')) {
-            $this->product_service->updatePV();
+            $product_variant_params = [
+                'count' => $request->get('product_variant_count', 0),
+                'description' => $request->get('product_variant_description', ''),
+                'status' => 1,
+                'discount' => 0,
+            ];
+
+            if ($request->get('product_variant_discount')) {
+                $product_variant_params['discount'] =  $request->get('product_variant_discount_percent', 0);
+                $product_variant_params['start_at'] =  $request->get('product_variant_start_discount', '2022-10-10');
+                $product_variant_params['end_at'] =  $request->get('product_variant_end_discount', '2022-10-10');
+            }
+
+            if ($request->get('product_variant_image')) {
+                $thumbnail_name = $this->imageUploadPost($request, 'product_variant_image');
+                if ($thumbnail_name) {
+                    $product_variant_params['thumbnail'] = $thumbnail_name;
+                }
+            }
+
+            $product_variant_property = [
+                [
+                    'id_product_variant' => $request->get('id_product_variant'),
+                    'id_property' => $request->get('product_variant_property_1'),
+                ],
+                [
+                    'id_product_variant' => $request->get('id_product_variant'),
+                    'id_property' => $request->get('product_variant_property_2'),
+                ],
+                [
+                    'id_product_variant' => $request->get('id_product_variant'),
+                    'id_property' => $request->get('product_variant_property_5'),
+                ]
+            ];
+
+            $product_variant_option = [
+                [
+                    'id_product_variant' => $request->get('id_product_variant'),
+                    'id_option' => $request->get('product_variant_option_3'),
+                ],
+                [
+                    'id_product_variant' => $request->get('id_product_variant'),
+                    'id_option' => $request->get('product_variant_option_4'),
+                ]
+            ];
+
+            foreach($request->all() as $key => $item) {
+                if (Str::contains($key, 'files_')) {
+                    $list_image_name[] = $key;
+                }
+            }
+
+            $imageName = [];
+            foreach($list_image_name as $list_image_name_item) {
+                $imageName[] = $this->imageUploadPost($request, $list_image_name_item);
+            }
+
+            $this->product_service->updatePV($request->get('id_product_variant'),
+                $product_variant_params,
+                $product_variant_property,
+                $product_variant_option,
+                $request->get('pv_file'),
+                $imageName
+            );
+            return redirect()->route("server.product.get")->with('message', 'Cập nhật thành công.');
         } else {
             [$product_variant_option, $product_variant_property] = $this->product_service->getExtraPVData($request->get('id'));
             $selected_option = $product_variant_option->toArray();
             $selected_property = $product_variant_property->toArray();
-            [$product_variant_data, $product_data] = $this->product_service->getAllProductVariant($request->get('id'));
+            [$product_variant_data, $product_data, $product_variant_size, $product_variant_image] = $this->product_service->getDetailProductVariant($request->get('id'));
+
             return view('server::product.edit_product_variant')->with([
                 'product_variant_data' => $product_variant_data,
-                'product_data' => $product_data
+                'product_data' => $product_data,
+                'product_variant_size' => $product_variant_size,
+                'product_variant_image' => $product_variant_image,
             ])->with($this->product_service->getExtendData())->with([
                 'selected_option' => $selected_option,
                 'selected_property' => $selected_property

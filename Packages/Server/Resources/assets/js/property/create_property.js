@@ -1,6 +1,6 @@
 import {ajaxWithCsrf} from "../app";
 toastr.options.timeOut = 5000;
-let errorMessage = 'Message Error: ';
+let errorMessage = 'Lỗi ';
 
 $(document).ready(function () {
     $('.btn-submit').on('click', function () {
@@ -15,7 +15,7 @@ $(document).ready(function () {
         checkParams(params, () => {
             ajaxWithCsrf(url, params, function processResponse(res) {
                 if (res.data.status) {
-                    toastr.success('Create property successfull');
+                    toastr.success('Thêm thuộc tính thành công');
                     setTimeout(() => {
                         $('.button-cancel span').trigger('click');
                     }, 250)
@@ -24,18 +24,18 @@ $(document).ready(function () {
                     toastr.error(res.data.errorMessage);
                     return;
                 }
-            }, 'Something error!!!');
+            }, 'Có lỗi bất ngờ xảy ra!');
         })
     })
 })
 
 function checkParams(params, callback) {
     if (!params['property_group']) {
-        toastr.error(errorMessage + 'Property group is required.');
+        toastr.error(errorMessage + 'Nhóm thuộc tính là cần thiết.');
         return;
     }
     if (!params['property_value']) {
-        toastr.error(errorMessage + 'Property value is required.');
+        toastr.error(errorMessage + 'Giá trị thuộc tính là cần thiết.');
         return;
     }
 

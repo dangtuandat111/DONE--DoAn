@@ -2,10 +2,10 @@
     <table class="table table-striped" id="sortable-table-1">
         <thead>
         <tr>
-            <th>STT</th>
-            <th class="sortStyle unsortStyle">Name group</th>
-            <th class="sortStyle unsortStyle">Created at</th>
-            <th class="sortStyle unsortStyle">Updated at</th>
+            <th>#</th>
+            <th class="sortStyle unsortStyle">Tên nhóm thuộc tính</th>
+            <th class="sortStyle unsortStyle">Thời gian tạo</th>
+            <th class="sortStyle unsortStyle">Thời gian cập nhật</th>
         </tr>
         </thead>
         <tbody>

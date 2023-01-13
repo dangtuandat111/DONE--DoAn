@@ -4,17 +4,17 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header justify-content-center">
-                    <h5 class="modal-title f-20px">Update option group</h5>
+                    <h5 class="modal-title f-20px">Cập nhật nhóm tùy chọn</h5>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="optionGroupName">Option group name</label>
-                        <input type="text" class="form-control" id="optionGroupName" placeholder="Option group name">
+                        <label for="optionGroupName">Tên nhóm tùy chọn</label>
+                        <input type="text" class="form-control" id="optionGroupName" placeholder="Tên nhóm tùy chọn">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary confirm-save" data-id="-1">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                    <button type="button" class="btn btn-primary confirm-save" data-id="-1">Lưu lại thay đổi</button>
                 </div>
             </div>
         </div>

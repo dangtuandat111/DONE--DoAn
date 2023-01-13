@@ -2371,7 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./Packages/Server/Resources/assets/js/app.js");
 
 toastr.options.timeOut = 5000;
-var errorMessage = 'Message Error: ';
+var errorMessage = 'Lỗi: ';
 var currentParams;
 $(document).ready(function () {
   getSearchPropertyGroup();
@@ -2396,11 +2396,11 @@ function getSearchPropertyGroup() {
         $("#sortable-table-1").tablesort();
       });
     } else {
-      toastr.error('Property group is not exist.');
+      toastr.error('Nhóm thuộc tính không tồn tại.');
       return;
     }
-    toastr.success('Search updated');
-  }, 'Something error!!!');
+    toastr.success('Cập nhật thành công');
+  }, 'Có lỗi bất ngờ xảy ra!');
   function appendResponse(res, callback) {
     $('.data-property-group-table').html(res.data.html);
     if (callback) callback();
@@ -2418,11 +2418,11 @@ function getSearchProperty(id, current) {
     if (res.data.status) {
       appendResponse(res, current, function () {});
     } else {
-      toastr.error('Property group is not exist.');
+      toastr.error('Nhóm thuộc tính không tồn tại');
       return;
     }
-    toastr.success('Search updated');
-  }, 'Something error!!!');
+    toastr.success('Cập nhật thành công');
+  }, 'Có lỗi bất ngờ xảy ra!');
   function appendResponse(res, current, callback) {
     $(current).html(res.data.html);
     if (callback) callback();

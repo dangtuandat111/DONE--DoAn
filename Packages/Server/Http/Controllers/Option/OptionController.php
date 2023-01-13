@@ -55,7 +55,7 @@ class OptionController extends Controller {
             if (empty($name) || empty($id_option_group) || empty($value) || $bonus == null) {
                 return response()->json([
                     'status' => false,
-                    'errorMessage' => $this->errorMessage . 'All fields are required.'
+                    'errorMessage' => 'Nhập đầy đủ thông tin để tiếp tục.'
                 ]);
             }
 
@@ -65,7 +65,7 @@ class OptionController extends Controller {
             if (!$is_group_exist) {
                 return response()->json([
                     'status' => false,
-                    'errorMessage' => $this->errorMessage . 'Option group is not valid.'
+                    'errorMessage' => 'Nhóm tùy chọn không tồn tại.'
                 ]);
             }
 
@@ -94,7 +94,7 @@ class OptionController extends Controller {
             if (!$request->get('name') || ($request->get('status') != 0 && $request->get('status') != 1)) {
                 return response()->json([
                    'status' => false,
-                   'errorMessage' => $this->errorMessage . 'Option group name and option status are needed.'
+                   'errorMessage' => 'Tên nhóm tùy chọn và tên tùy chọn là cần thiết.'
                 ]);
             }
             if ($request->get('note')) {
@@ -143,13 +143,13 @@ class OptionController extends Controller {
             } else {
                 return response()->json([
                     'status' =>  $this->error_status,
-                    'errorMessage' => 'Failed on update brand info.'
+                    'errorMessage' => 'Cập nhật thông tin nhãn hàng không thành công.'
                 ]);
             }
         } catch (\Exception $e) {
             return response()->json([
                 'status' => $this->error_status,
-                'errorMessage' => $e->getMessage()
+                'errorMessage' => 'Có lỗi bất ngờ xảy ra.'
             ]);
         }
     }

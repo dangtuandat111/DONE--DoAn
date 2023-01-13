@@ -2371,7 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./Packages/Server/Resources/assets/js/app.js");
 
 toastr.options.timeOut = 5000;
-var errorMessage = 'Message Error: ';
+var errorMessage = 'Lỗi: ';
 $(document).ready(function () {
   $("#sortable-table-1").tablesort();
   $('footer').remove();
@@ -2385,7 +2385,7 @@ $(document).ready(function () {
       'id': id,
       'status': status
     };
-    var errorMessage = 'Update customer info failed.';
+    var errorMessage = 'Cập nhật thông tin người dùng thành công.';
     var that = $(this);
     var row_id = $(this).closest('td');
     (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
@@ -2404,36 +2404,48 @@ $(document).ready(function () {
       'id': id,
       'status': status
     };
-    var errorMessage = 'Update customer info failed.';
+    var errorMessage = 'Cập nhật thông tin người dùng thất bại';
     var that = $(this);
     var row_id = $(this).closest('td');
     (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
-      toastr.success('Update customer info successfull.');
+      toastr.success('Cập nhật thông tin người dùng thành công.');
       $(that).removeClass('btn btn-light btn-rounded disabled');
       $(that).addClass('badge-warning');
       $(row_id).find('.update_status_disabled').removeClass('badge-danger');
       $(row_id).find('.update_status_disabled').addClass('btn btn-light btn-rounded disabled');
     }, errorMessage);
   });
+  $('.page-link-page').on('click', function () {
+    $('#buttonSearch').trigger('click', [$(this).attr('data-page')]);
+  });
 });
-$('#buttonSearch').on('click', function () {
+$('#buttonSearch').on('click', function (e, data) {
   var url = $('#search_customer').val();
+  var page = 1;
+  if (data) {
+    page = data[0];
+  }
   var params = {
     'perPage': $("select[name='order-listing_length'] :selected").val(),
     'name': $("#search_customer_name").val(),
     'email': $("#search_customer_email").val(),
-    'status': $("select[name='search_customer_status'] :selected").val()
+    'status': $("select[name='search_customer_status'] :selected").val(),
+    'page': page
   };
   (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
     if (res.data.status === true) {
       $('.data-customer-table').html();
       $('.data-customer-table').html(res.data.html);
       $("#sortable-table-1").tablesort();
-      toastr.success('Search updated');
+      $('.page-link-page').on('click', function () {
+        $('#buttonSearch').trigger('click', [$(this).attr('data-page')]);
+      });
+      adminAction();
+      toastr.success('Cập nhật thành công.');
     } else {
-      toastr.error(errorMessage + 'Customer is not exist.');
+      toastr.error(errorMessage + 'Người dùng không tồn tại');
     }
-  }, 'Something error!!!');
+  }, 'Có lỗi bất ngờ xảy ra!');
 });
 function showProfile() {
   var currentModal = $('#customerModal');
@@ -2475,9 +2487,9 @@ function getUserData(customer_id, callback) {
         $('.modal-header').addClass('bg-red');
       }
     } else {
-      toastr.error(errorMessage + 'Customer is not exist.');
+      toastr.error(errorMessage + 'Người dùng không tồn tại.');
     }
-  }, 'Something error!!!');
+  }, 'Có lỗi bất ngờ xảy ra!');
   if (callback) {
     callback();
   }
@@ -2490,11 +2502,11 @@ function adminAction() {
     };
     (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
       if (res.data.status === true) {
-        toastr.success('Reset password customer successfull.');
+        toastr.success('Đặt lại mật khẩu thành công');
       } else {
-        toastr.error(errorMessage + 'Reset password customer successfull.');
+        toastr.error(errorMessage + 'Đặt lại mật khẩu thành công');
       }
-    }, 'Something error!!!');
+    }, 'Có lỗi bất ngờ xảy ra!');
   });
   $('.force-login').on('click', function () {
     var url = $('#logout_customer').val();
@@ -2503,11 +2515,11 @@ function adminAction() {
     };
     (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
       if (res.data.status === true) {
-        toastr.success('Logout user successfull.');
+        toastr.success('Đăng xuất thành công.');
       } else {
-        toastr.error(errorMessage + 'Logout user successfull.');
+        toastr.error(errorMessage + 'Đăng xuất không thành công.');
       }
-    }, 'Something error!!!');
+    }, 'Có lỗi bất ngờ xảy ra!');
   });
 }
 })();

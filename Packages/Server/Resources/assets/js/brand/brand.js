@@ -15,7 +15,7 @@ $(document).ready(function () {
         let that = $(this);
         let row_id = $(this).closest('td');
         ajaxWithCsrf(url, params, function processResponse(res) {
-            toastr.success('Update brand info successfull.');
+            toastr.success('Cập nhật thông tin thành công.');
             $(that).removeClass('btn btn-light btn-rounded disabled');
             $(that).addClass('badge-danger');
             $(row_id).find('.update_status_enabled').removeClass('badge-warning');
@@ -34,7 +34,7 @@ $(document).ready(function () {
         let that = $(this);
         let row_id = $(this).closest('td');
         ajaxWithCsrf(url, params, function processResponse(res) {
-            toastr.success('Update brand info successfull.');
+            toastr.success('Cập nhật thông tin nhãn hàng thành công');
             $(that).removeClass('btn btn-light btn-rounded disabled');
             $(that).addClass('badge-warning');
             $(row_id).find('.update_status_disabled').removeClass('badge-danger');
@@ -53,10 +53,10 @@ $(document).ready(function () {
                 $('.brand_list').html(res.data.html);
                 $("#sortable-table-1").tablesort();
             } else {
-                toastr.error('Brand is not exist.');
+                toastr.error('Nhãn hàng không tồn tại.');
                 return;
             }
-            toastr.success('Search updated');
-        }, 'Something error!!!');
+            toastr.success('Cập nhật thành công.');
+        }, 'Có lỗi bất ngờ xảy ra.');
     })
 })

@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body {
+    font-family: ui-sans-serif!important;
+    font-size: 14px;
+}
 #hometab .tabs {
   float: left;
   width: 100%;
@@ -1768,7 +1772,7 @@
   border-radius: 0;
   height: 42px;
   font-size: 14px;
-  font-family: Poppins, Helvetica, sans-serif;
+  font-family: ui-sans-serif;
 }
 .block-newsletter .parallax .block-content .input-group .input-group-btn .btn-theme {
   border: none;

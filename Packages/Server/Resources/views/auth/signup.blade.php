@@ -32,24 +32,24 @@
                         <div class="brand-logo mb-0">
                             <img src="{{ asset('logo-2.png') }}" alt="logo">
                         </div>
-                        <h4>Hello! let's get started</h4>
-                        <h6 class="font-weight-light">Sign in to continue.</h6>
+                        <h4>Xin chào, Hãy bắt đầu bằng việc đăng kí tài khoản mới</h4>
+                        <h6 class="font-weight-light">Đăng kí để tiếp tục nào.</h6>
                         <form id="signupForm" class="pt-3" action="{{ route('server.signup.post') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <input type="email" required class="form-control form-control-lg rounded" id="email"  name="email" placeholder="Email" value="{{ old('email') }}" oninvalid="this.setCustomValidity('Messsage Error: Please enter valid email')" oninput="this.setCustomValidity('')">
+                                <input type="email" required class="form-control form-control-lg rounded" id="email"  name="email" placeholder="Địa chỉ email" value="{{ old('email') }}" oninvalid="this.setCustomValidity('Lỗi: địa chỉ email không hợp lệ.')" oninput="this.setCustomValidity('')">
                             </div>
                             <div class="form-group">
-                                <input type="password"  class="form-control form-control-lg rounded" id="password" name="password" placeholder="Password" value="{{ old('password') }}" required oninvalid="this.setCustomValidity('Messsage Error: Please enter valid password')" oninput="this.setCustomValidity('')" maxlength="8" size="8">
+                                <input type="password"  class="form-control form-control-lg rounded" id="password" name="password" placeholder="Mật khẩu" value="{{ old('password') }}" required oninvalid="this.setCustomValidity('Lỗi: mật khẩu không hợp lệ.')" oninput="this.setCustomValidity('')">
                             </div>
                             <div class="form-group">
-                                <input type="text" required class="form-control form-control-lg rounded" id="user_name" name="user_name" placeholder="User Name" value="{{ old('user_name') }}" oninvalid="this.setCustomValidity('Messsage Error: Please enter valid password')" oninput="this.setCustomValidity('')">
+                                <input type="text" required class="form-control form-control-lg rounded" id="user_name" name="user_name" placeholder="Tên người dùng" value="{{ old('user_name') }}" oninvalid="this.setCustomValidity('Lỗi: tên người dùng không hợp lệ.')" oninput="this.setCustomValidity('')">
                             </div>
                             <div class="mt-3">
                                 <input class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" value="SIGN UP">
                             </div>
                             <div class="text-center mt-4 font-weight-light">
-                                Already have an account? <a href="{{ route('server.login.get') }}" class="text-primary">Login</a>
+                                Đã có tài khoản <a href="{{ route('server.login.get') }}" class="text-primary">Đăng nhập</a>
                             </div>
                         </form>
                     </div>

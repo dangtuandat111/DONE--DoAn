@@ -12,15 +12,15 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Brand List</h4>
+                        <h4 class="card-title">Danh sách nhãn hàng</h4>
                         <div class="new-action float-right" style="padding-top: 13px; margin-bottom: 1.5rem;">
-                            <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.brand.create.get') }}">Create new brand</a>
+                            <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.brand.create.get') }}">Thêm mới nhãn hàng</a>
                         </div>
                         <div class="form-group float-right" style="padding-right: 1rem">
                             <div class="input-group">
-                                <input type="text" class="form-control border-radius-15" id="search_brand_name" placeholder="Search by name" name="search">
+                                <input type="text" class="form-control border-radius-15" id="search_brand_name" placeholder="Tìm kiếm theo tên" name="search">
                                 <div class="input-group-append">
-                                    <button class="btn btn-sm btn-primary" type="button" id="buttonSearch">Search</button>
+                                    <button class="btn btn-sm btn-primary" type="button" id="buttonSearch">Tìm kiếm</button>
                                 </div>
                             </div>
                         </div>
@@ -30,12 +30,12 @@
                                 <tr>
                                     <th>STT</th>
 {{--                                    <th>Name</th>--}}
-                                    <th class="sortStyle unsortStyle">Name<i class="ti-angle-down"></i></th>
-                                    <th class="sortStyle unsortStyle">Image</th>
-                                    <th class="sortStyle unsortStyle">Description</th>
-                                    <th class="sortStyle unsortStyle">Create at<i class="ti-angle-down"></i></th>
-                                    <th class="sortStyle unsortStyle">Status</th>
-                                    <th class="sortStyle unsortStyle">Action</th>
+                                    <th class="sortStyle unsortStyle">Tên nhãn hàng<i class="ti-angle-down"></i></th>
+                                    <th class="sortStyle unsortStyle">Ảnh</th>
+                                    <th class="sortStyle unsortStyle">Thông tin mô tả</th>
+                                    <th class="sortStyle unsortStyle">Thời gian tạo<i class="ti-angle-down"></i></th>
+                                    <th class="sortStyle unsortStyle">Tình trạng</th>
+                                    <th class="sortStyle unsortStyle">Hành động thêm</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -50,11 +50,11 @@
                                     <td class="mw-100px wrap-content">{{ $brand_data_item->description }}</td>
                                     <td>{{ $brand_data_item->c_at }}</td>
                                     <td>
-                                        <label class="badge badge-warning @if ($brand_data_item->status !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_enabled" data-id="{{ $brand_data_item->id }}">Enabled</label>
-                                        <label class="badge badge-danger @if ($brand_data_item->status == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_disabled" data-id="{{ $brand_data_item->id }}">Disabled</label>
+                                        <label class="badge badge-warning @if ($brand_data_item->status !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_enabled" data-id="{{ $brand_data_item->id }}">Khả dụng</label>
+                                        <label class="badge badge-danger @if ($brand_data_item->status == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_disabled" data-id="{{ $brand_data_item->id }}">Không khả dụng</label>
                                     </td>
                                     <td>
-                                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.brand.edit.get', ['slug' => $brand_data_item->slug]) }}">Edit {{ $brand_data_item->name }}</a>
+                                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.brand.edit.get', ['slug' => $brand_data_item->slug]) }}">Chỉnh sửa {{ $brand_data_item->name }}</a>
                                     </td>
                                 <?php $stt++ ?>
                                 </tr>

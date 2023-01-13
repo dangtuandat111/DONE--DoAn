@@ -2428,7 +2428,7 @@ function checkValidData(name, email, phone_number, password, password_confirm) {
     return false;
   } else {
     var emailRegex = /^([a-z0-9.\/\+%&,|}#\"_~:-]+)\@([a-z0-9_])([a-z0-9._-]*)\.([a-z]+$)/;
-    var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$|^([0-9]{8})+$/;
+    var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$|^([0-9]{8})+$/;
     if (!emailRegex.test(email)) {
       toastr.error('ERROR MESSAGE: ' + 'Email address is invalid.');
       return false;
@@ -2444,6 +2444,13 @@ function checkValidData(name, email, phone_number, password, password_confirm) {
     return true;
   }
 }
+$('.btn-change-avatar').on('click', function () {
+  if ($('#change_avatar').hasClass('d-none')) {
+    $('#change_avatar').removeClass('d-none');
+  } else {
+    $('#change_avatar').addClass('d-none');
+  }
+});
 })();
 
 /******/ })()

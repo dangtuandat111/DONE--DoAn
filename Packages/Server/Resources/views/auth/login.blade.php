@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dumpskin - Login page</title>
+    <title>DAMSKIN - Đăng nhập</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('DoAnTotNghiep/server/vendors/feather/feather.css') }}">
@@ -32,12 +32,12 @@
                         <div class="brand-logo mb-0">
                             <img src="{{ asset('logo-2.png') }}" alt="logo">
                         </div>
-                        <h4>Hello! let's get started</h4>
-                        <h6 class="font-weight-light">Sign in to continue.</h6>
+                        <h4>Xin chào, Hãy bắt đầu bằng việc đăng nhập</h4>
+                        <h6 class="font-weight-light">Đăng nhập để tiếp tục nào!</h6>
                         <form class="pt-3" action="{{ route('server.login.post') }}" method="post">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <div class="form-group">
-                                <input type="email" required class="form-control form-control-lg rounded" id="email"  name="email" placeholder="Username" value="{{ old('email') }}" oninvalid="this.setCustomValidity('Messsage Error: Please enter valid email')" oninput="this.setCustomValidity('')">
+                                <input type="email" required class="form-control form-control-lg rounded" id="email"  name="email" placeholder="Địa chỉ email" value="{{ old('email') }}" oninvalid="this.setCustomValidity('Lỗi: Địa chỉ email không hợp lệ.')" oninput="this.setCustomValidity('')">
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
                                         @if (str_contains($error, 'email'))
@@ -51,7 +51,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <input type="password" required class="form-control form-control-lg rounded" id="password" name="password" placeholder="Password" value="{{ old('email') }}" oninvalid="this.setCustomValidity('Messsage Error: Please enter valid password')" oninput="this.setCustomValidity('')" maxlength="8" size="8">
+                                <input type="password" required class="form-control form-control-lg rounded" id="password" name="password" placeholder="Mật khẩu" value="{{ old('email') }}" oninvalid="this.setCustomValidity('Lỗi: Mật khẩu không hợp lệ.')" oninput="this.setCustomValidity('')">
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
                                         @if (str_contains($error, 'password'))
@@ -71,7 +71,7 @@
                                 <div class="form-check">
                                     <label class="form-check-label texts-muted">
                                         <input type="checkbox" class="form-check-input" name="remember">
-                                        Keep me signed in
+                                        Lưu đăng nhập
                                     </label>
                                 </div>
 {{--                                <a href="#" class="auth-link text-black">Forgot password?</a>--}}
@@ -82,7 +82,7 @@
 {{--                                </button>--}}
 {{--                            </div>--}}
                             <div class="text-center mt-4 font-weight-light">
-                                Don't have an account? <a href="{{ route('server.signup.get') }}" class="text-primary">Create</a>
+                                Không có tài khoản <a href="{{ route('server.signup.get') }}" class="text-primary">Tạo tài khoản mới</a>
                             </div>
                         </form>
                     </div>

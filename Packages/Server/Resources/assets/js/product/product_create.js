@@ -1,6 +1,6 @@
 import {ajaxWithCsrf} from "../app";
 toastr.options.timeOut = 5000;
-let errorMessage = 'Message Error: ';
+let errorMessage = 'Lỗi: ';
 
 let currentStep = 1;
 let maxStep = 2;
@@ -26,7 +26,7 @@ $(document).ready(function () {
                     { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
                 ]
             },
-            placeholder: 'Describe your product',
+            placeholder: 'Thêm mô tả sản phẩm',
             fontSize: {
                 options: [ 10, 12, 14, 'default', 18, 20, 22 ],
                 supportAllValues: true
@@ -50,7 +50,7 @@ $(document).ready(function () {
                     { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
                 ]
             },
-            placeholder: 'Describe your product variant',
+            placeholder: 'Thêm mô tả biến thể sản phẩm',
             fontSize: {
                 options: [ 10, 12, 14, 'default', 18, 20, 22 ],
                 supportAllValues: true
@@ -122,62 +122,61 @@ function checkMove() {
     if (currentStep == 1) {
         if ($('#product_select_create_option').val() == 0) {
             if (!$('#product_select_product').val()) {
-                toastr.error(errorMessage + 'Select product to continue');
+                toastr.error(errorMessage + 'Chọn sản phẩm để tiếp tục');
                 status = false;
             }
         } else if ($('#product_select_create_option').val() == 1) {
             if (!$('#id_brand').val()) {
-                toastr.error(errorMessage + 'Select brand to continue');
+                toastr.error(errorMessage + 'Chọn nhãn hàng để tiếp tục');
                 status = false;
             } else if (!$('#id_category').val()) {
-                toastr.error(errorMessage + 'Select category to continue');
+                toastr.error(errorMessage + 'Chọn loại giày để tiếp tục');
                 status = false;
             }
             if (!$('#product_name').val()) {
-                toastr.error(errorMessage + 'Select category to continue');
+                toastr.error(errorMessage + 'Nhập tên sản phẩm để tiếp tục');
                 status = false;
             } else if (!$('#product_price').val() || !isNumeric($('#product_price').val())) {
-                toastr.error(errorMessage + 'Fill valid price to continue');
+                toastr.error(errorMessage + 'Nhập giá tiền để tiếp tục.');
                 status = false;
             }
             if ($('#product_discount').is(':checked')) {
                 if (!$('#product_discount_percent').val() || !isNumeric($('#product_discount_percent').val())) {
                     if (parseFloat($('#product_discount_percent').val()) >= 100 && parseFloat($('#product_discount_percent').val()) < 0) {
-                        toastr.error(errorMessage + 'Fill valid discount percent to continue.');
+                        toastr.error(errorMessage + 'Giảm giá (%) không hợp lệ');
                         status = false;
                     }
-                    toastr.error(errorMessage + 'Fill valid discount percent to continue');
-                    status = false;
+                    status = true;
                 } else if (!$('#product_start_discount').val() || !$('#product_end_discount').val()) {
-                    toastr.error(errorMessage + 'Select discount time to continue');
+                    toastr.error(errorMessage + 'Chọn thời gian bắt đầu và thời gian kết thúc để tiếp tục');
                     status = false;
                 }
             }
         } else {
-            toastr.error(errorMessage + 'Please select option to continue');
+            toastr.error(errorMessage + 'Chọn tùy chọn để tiếp tục');
             status = false;
         }
     }
     if (currentStep == 2) {
         if (!$('#product_variant_count').val() || !isNumeric($('#product_variant_count').val())) {
-            toastr.error(errorMessage + 'Select product to continue');
+            toastr.error(errorMessage + 'Chọn biến thể sản phẩm để tiếp tục');
             status = false;
         }
         if ($('#product_variant_discount').is(':checked')) {
             if (!$('#product_variant_discount_percent').val() || !isNumeric($('#product_variant_discount_percent').val())) {
-                toastr.error(errorMessage + 'Fill valid discount percent to continue');
+                toastr.error(errorMessage + 'Giảm giá (%) không thành công.');
                 status = false;
             } else if (!$('#product_variant_start_discount').val() || !$('#product_variant_end_discount').val()) {
-                toastr.error(errorMessage + 'Select discount time to continue');
+                toastr.error(errorMessage + 'Chọn thời gian bắt đầu và thời gian kết thúc để tiếp tục.');
                 status = false;
             }
         }
         if (!$("[name='product_variant_image[]']").val()) {
-            toastr.error(errorMessage + 'Upload thumbnail to continue');
+            toastr.error(errorMessage + 'Thêm ảnh đại diện để tiếp tục');
             status = false;
         }
         if (('.dandev_attach_view').children().length == 0) {
-            toastr.error(errorMessage + 'Upload product image to continue');
+            toastr.error(errorMessage + 'Thêm ảnh sản phẩm để tiếp tục');
             status = false;
         }
     }
@@ -196,7 +195,7 @@ function checkBeforeSubmit() {
 $('.submit-button').on('submit', function (e) {
     if (!checkBeforeSubmit()) {
         e.preventDefault();
-        toastr.error(errorMessage + 'Failed on submit form');
+        toastr.error('Có lỗi bất ngờ xảy ra!');
     }
 })
 

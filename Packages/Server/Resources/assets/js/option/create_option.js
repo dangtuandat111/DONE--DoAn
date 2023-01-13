@@ -1,6 +1,6 @@
 import {ajaxWithCsrf} from "../app";
 toastr.options.timeOut = 5000;
-let errorMessage = 'Message Error: ';
+let errorMessage = 'Lỗi: ';
 
 $(document).ready(function () {
     $('.btn-submit').on('click', function () {
@@ -16,7 +16,7 @@ $(document).ready(function () {
         checkParams(params, () => {
             ajaxWithCsrf(url, params, function processResponse(res) {
                 if (res.data.status) {
-                    toastr.success('Create option successfull');
+                    toastr.success('Thêm tùy chọn thành công');
                     setTimeout(() => {
                         $('.button-cancel span').trigger('click');
                     }, 250)
@@ -25,7 +25,7 @@ $(document).ready(function () {
                     toastr.error(res.data.errorMessage);
                     return;
                 }
-            }, 'Something error!!!');
+            }, 'Có lỗi bất ngờ xảy ra!');
         })
     })
 })

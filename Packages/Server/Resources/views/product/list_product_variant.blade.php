@@ -5,13 +5,14 @@
         <table class="table table-striped" id="product-table">
             <thead>
             <tr>
-                <th>STT</th>
-                <th class="sortStyle unsortStyle">Product name</th>
-                <th class="sortStyle unsortStyle">Count</th>
-                <th class="sortStyle unsortStyle">Thumbnail</th>
-                <th class="sortStyle unsortStyle">Updated at</th>
-                <th class="sortStyle unsortStyle">Created at</th>
-                <th class="sortStyle unsortStyle">Size</th>
+                <th>#</th>
+                <th class="sortStyle unsortStyle">Tên biến thể sản phẩm</th>
+                <th class="sortStyle unsortStyle">Số lượng</th>
+                <th class="sortStyle unsortStyle">Ảnh</th>
+                <th class="sortStyle unsortStyle">Thời gian cập nhật</th>
+                <th class="sortStyle unsortStyle">Thời gian tọa</th>
+                <th class="sortStyle unsortStyle">Kích cỡ</th>
+                <th class="sortStyle unsortStyle">Hành động thêm</th>
             </tr>
             </thead>
             <tbody>
@@ -24,12 +25,12 @@
                     <td>
                         <img src="{{ asset('DoAnTotNghiep/server/assets/images/product/' . $product_variant_data_item->thumbnail) }}"
                     </td>
-                    <td>{{ $product_variant_data_item->updated_at }}</td>
-                    <td>{{ $product_variant_data_item->created_at }}</td>
+                    <td>{{ \Carbon\Carbon::parse($product_variant_data_item->updated_at)->format('d-m-Y')}}</td>
+                    <td>{{ \Carbon\Carbon::parse($product_variant_data_item->created_at)->format('d-m-Y')}}</td>
                     <td>{{ $product_variant_size[$stt - 1]->value }}</td>
-{{--                    <td>--}}
-{{--                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.product.variant.edit', ['id' => $product_variant_data_item->id]) }}">Edit</a>--}}
-{{--                    </td>--}}
+                    <td>
+                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.product.variant.edit', ['id' => $product_variant_data_item->id]) }}">Chỉnh sửa</a>
+                    </td>
                 </tr>
                 <?php $stt++ ?>
             @endforeach

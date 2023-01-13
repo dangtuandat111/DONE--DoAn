@@ -1,6 +1,6 @@
 import {ajaxWithCsrf} from "../app";
 toastr.options.timeOut = 5000;
-let errorMessage = 'Message Error: ';
+let errorMessage = 'Lỗi: ';
 
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic/build/ckeditor';
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
                     { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
                 ]
             },
-            placeholder: 'Describe your product',
+            placeholder: 'Thêm mô tả sản phẩm',
             fontSize: {
                 options: [ 10, 12, 14, 'default', 18, 20, 22 ],
                 supportAllValues: true
@@ -33,7 +33,7 @@ $(document).ready(function () {
     ClassicEditor
         .create(document.getElementById('product_feature'), {
             toolbar: ['bold', 'italic', 'bulletedList', 'numberedList',  'undo', 'redo', ],
-            placeholder: 'Describe your product variant',
+            placeholder: 'Thêm mô tả biến thể sản phẩm',
             fontSize: {
                 options: [ 10, 12, 14, 'default', 18, 20, 22 ],
                 supportAllValues: true
@@ -47,31 +47,31 @@ $(document).ready(function () {
 $('.btn-submit').on('click', function (e) {
     let status = true;
     if (!$('#id_brand').val()) {
-        toastr.error(errorMessage + 'Select brand to continue');
+        toastr.error(errorMessage + 'Chọn nhãn hàng để tiếp tục');
         status = false;
     } else if (!$('#id_category').val()) {
-        toastr.error(errorMessage + 'Select category to continue');
+        toastr.error(errorMessage + 'Chọn loại giày để tiếp tục');
         status = false;
     }
     if (!$('#product_name').val()) {
-        toastr.error(errorMessage + 'Select category to continue');
+        toastr.error(errorMessage + 'Nhập tên sản phẩm để tiếp tục');
         status = false;
     } else if (!$('#product_price').val() || !isNumeric($('#product_price').val())) {
-        toastr.error(errorMessage + 'Fill valid price to continue');
+        toastr.error(errorMessage + 'Giá tiền không hợp lệ.');
         status = false;
     }
     if ($('#product_discount').is(':checked')) {
         if (!$('#product_discount_percent').val() || !isNumeric($('#product_discount_percent').val())) {
             if (parseFloat($('#product_discount_percent').val()) >= 100 || parseFloat($('#product_discount_percent').val()) < 0) {
-                toastr.error(errorMessage + 'Fill valid discount percent to continue.');
+                toastr.error(errorMessage + 'Giảm giá (%) không hợp lệ.');
                 status = false;
             }
         } else if (!$('#product_start_discount').val() || !$('#product_end_discount').val()) {
-            toastr.error(errorMessage + 'Select discount time to continue');
+            toastr.error(errorMessage + 'Chọn thời gian bắt đầu để tiếp tục');
             status = false;
         } else if (isNumeric($('#product_price').val())) {
             if (parseFloat($('#product_discount_percent').val()) >= 100 || parseFloat($('#product_discount_percent').val()) < 0) {
-                toastr.error(errorMessage + 'Fill valid discount percent to continue.');
+                toastr.error(errorMessage + 'Chọn thời gian kết thúc để tiếp tục');
                 status = false;
             }
         }

@@ -2382,11 +2382,11 @@ $(document).ready(function () {
       'id': id,
       'status': status
     };
-    var errorMessage = 'Update user status failed.';
+    var errorMessage = 'Cập nhật trạng thái thất bại.';
     var that = $(this);
     var row_id = $(this).closest('td');
     (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
-      toastr.success('Update user status successfull.');
+      toastr.success('Cập nhật trạng thái thành công');
       $(that).removeClass('btn btn-light btn-rounded disabled');
       $(that).addClass('badge-danger');
       $(row_id).find('.update_status_enabled').removeClass('badge-warning');
@@ -2401,11 +2401,11 @@ $(document).ready(function () {
       'id': id,
       'status': status
     };
-    var errorMessage = 'Update user status failed.';
+    var errorMessage = 'Cập nhật trạng thái thành công';
     var that = $(this);
     var row_id = $(this).closest('td');
     (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
-      toastr.success('Update user status successfull.');
+      toastr.success('Cập nhật trạng thái thành công.');
       $(that).removeClass('btn btn-light btn-rounded disabled');
       $(that).addClass('badge-warning');
       $(row_id).find('.update_status_disabled').removeClass('badge-danger');
@@ -2422,14 +2422,14 @@ $(document).ready(function () {
       'id': id,
       'role': 1
     };
-    var errorMessage = 'Update user info failed.';
+    var errorMessage = 'Cập nhật thông tin người dùng thành công';
     (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
       if (res.data.status) {
-        toastr.success('Update user info successfull.');
+        toastr.success('Cập nhật thông tin người dùng thành công');
         $('.update_admin_role[data-id="' + id + '"]').addClass('disabled');
         $('.update_admin_role[data-id="' + id + '"]').text('Admin');
       } else {
-        toastr.error('Update user info fail.');
+        toastr.error('Cập nhật thông tin không thành công.');
       }
       $('#js-panel').modal('hide');
     }, errorMessage);
@@ -2445,11 +2445,11 @@ $(document).ready(function () {
         $('.data-customer-table').html(res.data.html);
         $("#sortable-table-1").tablesort();
       } else {
-        toastr.error('User is not exist.');
+        toastr.error('Người dùng không tồn tại.');
         return;
       }
-      toastr.success('Search updated.');
-    }, 'Something error!!!');
+      toastr.success('Cập nhật thành công.');
+    }, 'Có lỗi bất ngờ xảy ra!');
   });
 });
 function outFocusModal() {

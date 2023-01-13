@@ -1,6 +1,6 @@
 import {ajaxWithCsrf} from "../app";
 toastr.options.timeOut = 5000;
-let errorMessage = 'Message Error: ';
+let errorMessage = 'Lỗi: ';
 
 let currentParams;
 
@@ -29,11 +29,11 @@ function getSearchPropertyGroup(page = 1) {
                 $("#sortable-table-1").tablesort();
             })
         } else {
-            toastr.error('Property group is not exist.');
+            toastr.error('Nhóm thuộc tính không tồn tại.');
             return;
         }
-        toastr.success('Search updated');
-    }, 'Something error!!!');
+        toastr.success('Cập nhật thành công');
+    }, 'Có lỗi bất ngờ xảy ra!');
 
     function appendResponse(res, callback) {
         $('.data-property-group-table').html(res.data.html);
@@ -56,11 +56,11 @@ function getSearchProperty(id, current) {
             appendResponse(res,current, () => {
             })
         } else {
-            toastr.error('Property group is not exist.');
+            toastr.error('Nhóm thuộc tính không tồn tại');
             return;
         }
-        toastr.success('Search updated');
-    }, 'Something error!!!');
+        toastr.success('Cập nhật thành công');
+    }, 'Có lỗi bất ngờ xảy ra!');
 
     function appendResponse(res,current, callback) {
         $(current).html(res.data.html);

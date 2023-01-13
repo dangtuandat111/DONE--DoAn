@@ -2371,7 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./Packages/Server/Resources/assets/js/app.js");
 
 toastr.options.timeOut = 5000;
-var errorMessage = 'Message Error: ';
+var errorMessage = 'Lỗi: ';
 $(document).ready(function () {
   $('.btn-submit').on('click', function () {
     var url = $(this).closest('.forms-sample').attr('data-route');
@@ -2384,7 +2384,7 @@ $(document).ready(function () {
     checkParams(params, function () {
       (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
         if (res.data.status) {
-          toastr.success('Create option successfull');
+          toastr.success('Thêm tùy chọn thành công');
           setTimeout(function () {
             $('.button-cancel span').trigger('click');
           }, 250);
@@ -2393,7 +2393,7 @@ $(document).ready(function () {
           toastr.error(res.data.errorMessage);
           return;
         }
-      }, 'Something error!!!');
+      }, 'Có lỗi bất ngờ xảy ra!');
     });
   });
 });

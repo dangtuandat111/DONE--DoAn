@@ -1,0 +1,14 @@
+.ck-editor__editable {
+  min-height: 250px;
+}
+
+.toast-success {
+  background-color: green;
+  border-radius: 20px !important;
+}
+.toast-error {
+  background-color: red;
+}
+.toast .toast-message {
+  text-align: center;
+}

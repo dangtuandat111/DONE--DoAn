@@ -3,12 +3,12 @@
     <tr>
         <th>STT</th>
         {{--                                    <th>Name</th>--}}
-        <th class="sortStyle unsortStyle">Name<i class="ti-angle-down"></i></th>
-        <th class="sortStyle unsortStyle">Image</th>
-        <th class="sortStyle unsortStyle">Description</th>
-        <th class="sortStyle unsortStyle">Create at<i class="ti-angle-down"></i></th>
-        <th class="sortStyle unsortStyle">Status</th>
-        <th class="sortStyle unsortStyle">Action</th>
+        <th class="sortStyle unsortStyle">Tên nhãn hàng<i class="ti-angle-down"></i></th>
+        <th class="sortStyle unsortStyle">Ảnh</th>
+        <th class="sortStyle unsortStyle">Thông tin mô tả</th>
+        <th class="sortStyle unsortStyle">Thời gian tạo<i class="ti-angle-down"></i></th>
+        <th class="sortStyle unsortStyle">Tình trạng</th>
+        <th class="sortStyle unsortStyle">Hành động thêm</th>
     </tr>
     </thead>
     <tbody>
@@ -23,11 +23,11 @@
             <td class="mw-100px wrap-content">{{ $brand_data_item->description }}</td>
             <td>{{ $brand_data_item->c_at }}</td>
             <td>
-                <label class="badge badge-warning @if ($brand_data_item->status !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_enabled" data-id="{{ $brand_data_item->id }}">Enabled</label>
-                <label class="badge badge-danger @if ($brand_data_item->status == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_disabled" data-id="{{ $brand_data_item->id }}">Disabled</label>
+                <label class="badge badge-warning @if ($brand_data_item->status !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_enabled" data-id="{{ $brand_data_item->id }}">Khả dụng</label>
+                <label class="badge badge-danger @if ($brand_data_item->status == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_disabled" data-id="{{ $brand_data_item->id }}">Không khả dụng</label>
             </td>
             <td>
-                <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.brand.edit.get', ['slug' => $brand_data_item->slug]) }}">Edit {{ $brand_data_item->name }}</a>
+                <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.brand.edit.get', ['slug' => $brand_data_item->slug]) }}">Chỉnh sửa {{ $brand_data_item->name }}</a>
             </td>
             <?php $stt++ ?>
         </tr>

@@ -46,13 +46,13 @@ class BrandController extends Controller {
             } else {
                 return response()->json([
                     'status' =>  $this->error_status,
-                    'errorMessage' => 'Failed on update brand info.'
+                    'errorMessage' => 'Cập nhật thông tin không thành công.'
                 ]);
             }
         } catch (\Exception $e) {
             return response()->json([
                 'status' => $this->error_status,
-                'errorMessage' => $e->getMessage()
+                'errorMessage' => 'Có lỗi bất ngờ xảy ra.'
             ]);
         }
     }
@@ -79,7 +79,7 @@ class BrandController extends Controller {
                 'status' => false,
                 'data' => '',
                 'html' => '',
-                'errrorMessage' => $e->getMessage()
+                'errrorMessage' => 'Tìm kiếm không thành công.'
             ]);
         }
 

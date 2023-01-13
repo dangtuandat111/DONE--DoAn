@@ -32,11 +32,11 @@ function getSearchOption(page = 1) {
                 updateOptionGroup();
             })
         } else {
-            toastr.error('Option is not exist.');
+            toastr.error('Tùy chọn không tồn tại');
             return;
         }
-        toastr.success('Search updated');
-    }, 'Something error!!!');
+        toastr.success('Cập nhật thành công.');
+    }, 'Có lỗi bất ngờ xảy ra!');
 
     function appendResponse(res, callback) {
         $('.data-option-table').html(res.data.html);
@@ -78,13 +78,13 @@ function updateEditGroup() {
             'id': id,
             'name': name
         }
-        let errorMessage = 'Update option group info failed.';
+        let errorMessage = 'Cập nhật nhóm tùy chọn thất bại.';
         ajaxWithCsrf(url, params, function processResponse(res) {
             if (res.data.status) {
-                toastr.success('Update option group info successfull.');
+                toastr.success('Cập nhật nhóm tùy chọn thành công');
                 $(current).text(name);
             } else {
-                toastr.error('Update option group fail.');
+                toastr.error('Cập nhật nhóm tùy chọn thất bại.');
             }
             $('#edit-option-group').modal('hide');
         }, errorMessage)
@@ -100,11 +100,11 @@ function updateOptionGroup() {
             'id': id,
             'status': status
         }
-        let errorMessage = 'Update option group info failed.';
+        let errorMessage = 'Cập nhật nhóm tùy chọn thất bại.';
         let that = $(this);
         let row_id = $(this).closest('td');
         ajaxWithCsrf(url, params, function processResponse(res) {
-            toastr.success('Update option group info successfull.');
+            toastr.success('Cập nhật nhóm tùy chọn thành công.');
             $(that).removeClass('btn btn-light btn-rounded disabled');
             $(that).addClass('badge-danger');
             $(row_id).find('.update_status_option_group_enabled').removeClass('badge-warning');
@@ -120,11 +120,11 @@ function updateOptionGroup() {
             'id': id,
             'status': status
         }
-        let errorMessage = 'Update option group info failed.';
+        let errorMessage = 'Cập nhật nhóm tùy chọn thất bại.';
         let that = $(this);
         let row_id = $(this).closest('td');
         ajaxWithCsrf(url, params, function processResponse(res) {
-            toastr.success('Update option group info successfull.');
+            toastr.success('Cập nhật nhóm tùy chọn thất bại.');
             $(that).removeClass('btn btn-light btn-rounded disabled');
             $(that).addClass('badge-warning');
             $(row_id).find('.update_status_option_group_disabled').removeClass('badge-danger');
@@ -159,15 +159,15 @@ function updateEditOption() {
             'value': value,
             'bonus': bonus,
         }
-        let errorMessage = 'Update option info failed.';
+        let errorMessage = 'Cập nhật tùy chọn thất bại';
         ajaxWithCsrf(url, params, function processResponse(res) {
             if (res.data.status) {
-                toastr.success('Update option info successfull.');
+                toastr.success('Cập nhật tùy chọn thành công');
                 $(current).find('.option_name').text(name);
                 $(current).find('.option_value').text(value);
                 $(current).find('.option_bonus').text(bonus);
             } else {
-                toastr.error('Update option fail.');
+                toastr.error('Cập nhật tùy chọn thất bại');
             }
             $('#edit-option-group').modal('hide');
         }, errorMessage)

@@ -50,6 +50,7 @@ Route::prefix('admin')->group(function() {
             Route::prefix('/profile')->group(function() {
                 Route::get('', 'Profile\ProfileController@getProfile')->name('server.profile.get');
                 Route::post('/updateInfo', 'Profile\ProfileController@updateInfo')->name('server.api.profile.update');
+                Route::post('/changeAvatar', 'Profile\ProfileController@changeAvatar')->name('server.profile.update.avatar');
             });
 
             Route::prefix('/account')->group(function() {
@@ -85,6 +86,27 @@ Route::prefix('admin')->group(function() {
                     Route::get('/editProductVariant', 'Product\ProductController@editProductVariant')->name('server.product.variant.edit');
                 });
             }));
+
+            Route::group(['prefix' => 'order'], function () {
+                Route::get('', 'Order\OrderController@getOrder')->name('server.order.get');
+                Route::post('', 'Order\OrderController@getOrderList')->name('server.order.detail');
+            });
+
+            Route::group(['prefix' => 'statistic'], function () {
+                Route::get('', 'Statistic\StatisticController@getOrder')->name('server.statistic.get');
+                Route::post('/postOrder', 'Statistic\StatisticController@postOrder')->name('server.statistic.order');
+                Route::post('/postOrderChart', 'Statistic\StatisticController@getChartOrder')->name('server.statistic.chart.post');
+
+                Route::post('/postOrderCountChart', 'Statistic\StatisticController@getCountChart')->name('server.statistic.chart.count.post');
+
+                Route::post('/postOrderSell', 'Statistic\StatisticController@postSell')->name('server.statistic.sell.post');
+                Route::post('/postOrderSellChart', 'Statistic\StatisticController@postSellChart')->name('server.statistic.sell.chart.post');
+            });
+
+            Route::group(['prefix' => 'export'], function () {
+                Route::post('/doanhthu', 'Export\ExportController@exportDoanhThu')->name('server.export.doanhthu');
+                Route::post('/soluong', 'Export\ExportController@exportSoLuong')->name('server.order.soluong');
+            });
         });
     });
 });

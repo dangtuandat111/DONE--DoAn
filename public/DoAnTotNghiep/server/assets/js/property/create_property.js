@@ -2371,7 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./Packages/Server/Resources/assets/js/app.js");
 
 toastr.options.timeOut = 5000;
-var errorMessage = 'Message Error: ';
+var errorMessage = 'Lỗi ';
 $(document).ready(function () {
   $('.btn-submit').on('click', function () {
     var url = $(this).closest('.forms-sample').attr('data-route');
@@ -2383,7 +2383,7 @@ $(document).ready(function () {
     checkParams(params, function () {
       (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
         if (res.data.status) {
-          toastr.success('Create property successfull');
+          toastr.success('Thêm thuộc tính thành công');
           setTimeout(function () {
             $('.button-cancel span').trigger('click');
           }, 250);
@@ -2392,17 +2392,17 @@ $(document).ready(function () {
           toastr.error(res.data.errorMessage);
           return;
         }
-      }, 'Something error!!!');
+      }, 'Có lỗi bất ngờ xảy ra!');
     });
   });
 });
 function checkParams(params, callback) {
   if (!params['property_group']) {
-    toastr.error(errorMessage + 'Property group is required.');
+    toastr.error(errorMessage + 'Nhóm thuộc tính là cần thiết.');
     return;
   }
   if (!params['property_value']) {
-    toastr.error(errorMessage + 'Property value is required.');
+    toastr.error(errorMessage + 'Giá trị thuộc tính là cần thiết.');
     return;
   }
   if (callback) callback();

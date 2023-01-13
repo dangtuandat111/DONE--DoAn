@@ -31,7 +31,8 @@ class CustomerController extends Controller {
             'perPage' => $request->get('perPage', $this->perPage),
             'name' => $request->get('name', ''),
             'email' => $request->get('email', ''),
-            'status' => $request->get('status', '')
+            'status' => $request->get('status', ''),
+            'page' => $request->get('page', ''),
         ];
         $customer_data = $this->customer->searchCustomer($params);
 
@@ -57,13 +58,13 @@ class CustomerController extends Controller {
             } else {
                 return response()->json([
                     'status' =>  $this->error_status,
-                    'errorMessage' => 'Failed on update customer info.'
+                    'errorMessage' => 'Cập nhật thông tin không thành công.'
                 ]);
             }
         } catch (\Exception $e) {
             return response()->json([
                 'status' => $this->error_status,
-                'errorMessage' => $e->getMessage()
+                'errorMessage' => 'Có lỗi bất ngờ xảy ra.'
             ]);
         }
     }
@@ -79,7 +80,7 @@ class CustomerController extends Controller {
             return response()->json([
                 'status' => false,
                 'data' => '',
-                'errorMessage' => $this->errorMessage . $e->getMessage()
+                'errorMessage' => 'Có lỗi bất ngờ xảy ra.'
             ]);
         }
     }
@@ -94,7 +95,7 @@ class CustomerController extends Controller {
         } else {
             return response()->json([
                 'status' => false,
-                'errorMessage' => $this->errorMessage . 'Force login fail.'
+                'errorMessage' => $this->errorMessage . 'Bắt buộc đăng nhập lại không thành công'
             ]);
         }
     }
@@ -109,7 +110,7 @@ class CustomerController extends Controller {
         } else {
             return response()->json([
                 'status' => false,
-                'errorMessage' => $this->errorMessage . 'Force login fail.'
+                'errorMessage' => $this->errorMessage . 'Bắt buộc đăng nhập lại không thành công.'
             ]);
         }
     }

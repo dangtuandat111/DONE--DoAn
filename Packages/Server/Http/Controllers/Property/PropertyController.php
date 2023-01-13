@@ -74,13 +74,13 @@ class PropertyController extends Controller {
             if (!$request->get('property_value')) {
                 return response()->json([
                     'status' => false,
-                    'errorMessage' => $this->errorMessage . 'Property value is needed.'
+                    'errorMessage' => 'Giá trị thuộc tính là cần thiết'
                 ]);
             }
             if (!$request->get('property_group')) {
                 return response()->json([
                     'status' => false,
-                    'errorMessage' => $this->errorMessage . 'Property group is needed.'
+                    'errorMessage' => 'Nhóm thuộc tính là cần thiết'
                 ]);
             }
             $is_group_exist = $this->propertyGroup->where([
@@ -89,7 +89,7 @@ class PropertyController extends Controller {
             if (!$is_group_exist) {
                 return response()->json([
                     'status' => false,
-                    'errorMessage' => $this->errorMessage . 'Property group is not valid.'
+                    'errorMessage' => 'Nhóm thuộc tính không hợp lệ.'
                 ]);
             }
             $this->property->create([
@@ -114,7 +114,7 @@ class PropertyController extends Controller {
             if (!$request->get('name')) {
                 return response()->json([
                     'status' => false,
-                    'errorMessage' => $this->errorMessage . 'Property name is needed.'
+                    'errorMessage' => 'Tên thuộc tính là cần thiết.'
                 ]);
             }
             $this->propertyGroup->create([

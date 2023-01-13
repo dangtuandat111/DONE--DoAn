@@ -12,29 +12,29 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create new Brand</h4>
+                        <h4 class="card-title">Thêm mới nhãn hàng</h4>
                         <form class="forms-sample" method="post" action="{{ route('server.brand.create.post') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Brand name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Brand name" required oninvalid="this.setCustomValidity('Messsage Error: Please enter valid brand name')">
+                                <label for="name">Tên nhãn hàng</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Tên nhãn hàng" required oninvalid="this.setCustomValidity('Lỗi: tên nhãn hàng không hợp lệ.')">
                             </div>
                             <div class="form-group">
-                                <label>File upload</label>
+                                <label>Thêm ảnh nhãn hàng</label>
                                 <input type="file" name="img[]" class="file-upload-default">
                                 <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                                    <input type="text" class="form-control file-upload-info" disabled="" placeholder="Tải lên">
                                     <span class="input-group-append">
-                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                    <button class="file-upload-browse btn btn-primary" type="button">Tải lên</button>
                                     </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">Mô tả</label>
                                 <textarea class="form-control" id="description" name="description" rows="4"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                            <a class="btn btn-light" href="{{ route('server.brand.get') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">Thêm</button>
+                            <a class="btn btn-light" href="{{ route('server.brand.get') }}">Hủy bỏ</a>
                         </form>
                     </div>
                 </div>

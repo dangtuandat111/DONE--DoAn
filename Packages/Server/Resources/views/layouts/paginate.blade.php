@@ -1,16 +1,14 @@
 <div class="row mt-4">
     <div class="col-sm-12 col-md-5">
-        <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Showing {{ $data_pagination->perPage() * ($data_pagination->currentPage() - 1) + 1 }}
-            to {{ $data_pagination->perPage() * $data_pagination->currentPage() }}
-            of {{ $data_pagination->total() }}
-            entries
+        <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">Hiển thị {{ $data_pagination->perPage() * ($data_pagination->currentPage() - 1) + 1 }}
+            từ {{ $data_pagination->perPage() * $data_pagination->currentPage() }}
         </div>
     </div>
     <div class="col-sm-12 col-md-7">
         <div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate">
             <ul class="pagination d-flex justify-content-end">
                 <li class="paginate_button page-item previous @if ($paginator->onFirstPage()) disabled @endif" id="order-listing_previous">
-                    <a data-page="@if (!$paginator->onFirstPage()) {{ explode('?page=', $paginator->previousPageUrl())[1] }} @endif" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link page-link-page">Previous</a>
+                    <a data-page="@if (!$paginator->onFirstPage()) {{ explode('?page=', $paginator->previousPageUrl())[1] }} @endif" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link page-link-page">Trước</a>
                 </li>
 
                 <li class="paginate_button page-item active">
@@ -44,7 +42,7 @@
                        aria-controls="order-listing"
                        data-dt-idx="2"
                        tabindex="0"
-                       class="page-link page-link-page">Next
+                       class="page-link page-link-page">Tiếp
                     </a>
                 </li>
             </ul>

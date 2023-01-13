@@ -2,12 +2,12 @@
     <table class="table table-striped" id="sortable-table-1">
         <thead>
         <tr>
-            <th>STT</th>
-            <th class="sortStyle unsortStyle">Name group</th>
-            <th class="sortStyle unsortStyle">Id option</th>
-            <th class="sortStyle unsortStyle">Created at</th>
-            <th class="sortStyle unsortStyle">Updated at</th>
-            <th class="sortStyle unsortStyle">Action</th>
+            <th>#</th>
+            <th class="sortStyle unsortStyle">Tên nhóm</th>
+            <th class="sortStyle unsortStyle">Mã tùy chọn</th>
+            <th class="sortStyle unsortStyle">Thời gian tạo</th>
+            <th class="sortStyle unsortStyle">Thời gian cập nhật</th>
+            <th class="sortStyle unsortStyle">Hành động thêm</th>
         </tr>
         </thead>
         <tbody>
@@ -20,9 +20,9 @@
                 <td>{{ $option_data_item[0]['c_at'] }}</td>
                 <td>{{ $option_data_item[0]['u_at'] }}</td>
                 <td>
-                    <button type="button" class="btn btn-outline-info btn-fw padding-action edit-option-group" data-id="{{ $option_data_item[0]['og_id'] }}" data-toggle="modal" data-target="#edit-option-group">Edit option group</button>
-                    <label class="badge badge-warning @if ($option_data_item[0]['status'] !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_option_group_enabled" data-id="{{ $option_data_item[0]['og_id'] }}">Enabled</label>
-                    <label class="badge badge-danger @if ($option_data_item[0]['status'] == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_option_group_disabled" data-id="{{ $option_data_item[0]['og_id'] }}">Disabled</label>
+                    <button type="button" class="btn btn-outline-info btn-fw padding-action edit-option-group" data-id="{{ $option_data_item[0]['og_id'] }}" data-toggle="modal" data-target="#edit-option-group">Chỉnh sửa nhóm tùy chọn</button>
+                    <label class="badge badge-warning @if ($option_data_item[0]['status'] !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_option_group_enabled" data-id="{{ $option_data_item[0]['og_id'] }}">Khả dụng</label>
+                    <label class="badge badge-danger @if ($option_data_item[0]['status'] == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_option_group_disabled" data-id="{{ $option_data_item[0]['og_id'] }}">Không khả dụng</label>
                 </td>
                 <td class="details-control" data-element-id="#{{ 'option_data_item_class_table-' . $stt }}">
                 </td>
@@ -33,11 +33,11 @@
                         <thead>
                         <tr>
                             <th>STT</th>
-                            <th class="sortStyle unsortStyle">Id option</th>
-                            <th class="sortStyle unsortStyle">Name option</th>
-                            <th class="sortStyle unsortStyle">Option value</th>
-                            <th class="sortStyle unsortStyle">Bonus cost</th>
-                            <th class="sortStyle unsortStyle">Action</th>
+                            <th class="sortStyle unsortStyle">Mã tùy chọn</th>
+                            <th class="sortStyle unsortStyle">Tên tùy chọn</th>
+                            <th class="sortStyle unsortStyle">Giá trị</th>
+                            <th class="sortStyle unsortStyle">Giá tiền thêm</th>
+                            <th class="sortStyle unsortStyle">Hành động thêm</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -50,10 +50,10 @@
                                 <td class="option_value">{{ $option_data_item_item['value']  }}</td>{{ ' ' . $option_data_item_item['og_note'] }}
                                 <td class="option_bonus">{{ $option_data_item_item['bonus'] }}</td>
                                 <td class="d-none">
-                                    blah
+                                    Thêm
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-info btn-fw padding-action edit-option" data-id="{{ $option_data_item_item['id'] }}" data-name="{{ $option_data_item_item['name'] }}" data-value="{{ $option_data_item_item['value'] }}" data-bonus="{{ $option_data_item_item['bonus'] }}" data-toggle="modal" data-target="#edit-option">Edit option</button>
+                                    <button type="button" class="btn btn-outline-info btn-fw padding-action edit-option" data-id="{{ $option_data_item_item['id'] }}" data-name="{{ $option_data_item_item['name'] }}" data-value="{{ $option_data_item_item['value'] }}" data-bonus="{{ $option_data_item_item['bonus'] }}" data-toggle="modal" data-target="#edit-option">Chỉnh sửa tùy chọn</button>
                                 </td>
                                 <?php $stt2++ ?>
                             </tr>

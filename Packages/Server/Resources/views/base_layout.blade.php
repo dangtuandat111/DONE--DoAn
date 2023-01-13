@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Dumpskin - @yield('title')</title>
+    <title>DAMSKIN - @yield('title')</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('DoAnTotNghiep/server/vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('DoAnTotNghiep/server/vendors/ti-icons/css/themify-icons.css') }}">
@@ -33,7 +33,7 @@
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
             <a class="navbar-brand brand-logo mr-5" href="#">
                 <img src="{{ asset('logo-2.png') }}" class="mr-2" alt="logo"/>
-                <div class="page-dumpskin">Dumpskin</div>
+                <div class="page-dumpskin">DAMSKIN</div>
             </a>
             <a class="navbar-brand brand-logo-mini" href="#"><img src="{{ asset('logo-2.png') }}" alt="logo"/></a>
         </div>
@@ -41,31 +41,19 @@
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                 <span class="icon-menu"></span>
             </button>
-            <ul class="navbar-nav mr-lg-2">
-                <li class="nav-item nav-search d-none d-lg-block">
-                    <div class="input-group">
-                        <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-                <span class="input-group-text" id="search">
-                  <i class="icon-search"></i>
-                </span>
-                        </div>
-                        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
-                    </div>
-                </li>
-            </ul>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item nav-profile dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                        <img src="@if (isset($admin_data) && isset($admin_data->avatar)) {{ asset($admin_data->avatar) }} @else {{ asset('DoAnTotNghiep/server/assets/images/admin_default.png') }} @endif" alt="profile"/>
+                        <img src="@if (isset($admin_data) && isset($admin_data->avatar) && $admin_data->avatar) {{ asset($admin_data->avatar) }} @else {{ asset('DoAnTotNghiep/server/assets/images/admin_default.png') }} @endif" alt="profile"/>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                         <a class="dropdown-item" href="{{ route('server.profile.get') }}">
                             <i class="ti-settings text-primary"></i>
-                            Profile
+                            Thông tin tài khoản
                         </a>
                         <a class="dropdown-item" href="{{ route('server.logout.get') }}">
                             <i class="ti-power-off text-primary"></i>
-                            Logout
+                            Đăng xuất
                         </a>
                     </div>
                 </li>
@@ -83,20 +71,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('server.home.get') }}">
                         <i class="icon-grid menu-icon side-bar-icon"></i>
-                        <span class="menu-title" id="Home">Home / Dashboard</span>
+                        <span class="menu-title" id="Home">Trang chủ</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                         <i class="icon-marquee-minus menu-icon side-bar-icon"></i>
-                        <span class="menu-title" id="Product">Product</span>
+                        <span class="menu-title" id="Product">Trang sản phẩm</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="form-elements">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="{{ route('server.product.get') }}">List product</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('server.property.get') }}">Property</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('server.option.get') }}">Option</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('server.product.get') }}">Danh sách sản phẩm</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('server.property.get') }}">Danh sách thuộc tính</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('server.option.get') }}">Danh sách tùy chọn</a></li>
 {{--                            <li class="nav-item"><a class="nav-link" href="#">Sales</a></li>--}}
                         </ul>
                     </div>
@@ -104,51 +92,58 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                         <i class="icon-layout menu-icon side-bar-icon"></i>
-                        <span class="menu-title" id="Account">Account</span>
+                        <span class="menu-title" id="Account">Tài khoản</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('server.profile.get') }}">Profile</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('server.account.get') }}">List account</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('server.profile.get') }}">Trang cá nhân</a></li>
+                            @if ($admin_data->role == 1)
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('server.account.get') }}">Danh sách tài khoản</a></li>
+                            @endif
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#editors" aria-expanded="false" aria-controls="editors">
                         <i class="icon-layout menu-icon side-bar-icon"></i>
-                        <span class="menu-title" id="Order">Order</span>
+                        <span class="menu-title" id="Order">Đơn hàng</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="editors">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="#">List order</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="#">Statistical</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route("server.order.get") }}">Danh sách đơn hàng</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#ui-customer" aria-expanded="false" aria-controls="ui-customer">
                         <i class="icon-layout menu-icon side-bar-icon"></i>
-                        <span class="menu-title" id="Customer">Customer</span>
+                        <span class="menu-title" id="Customer">Khách hàng</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="ui-customer">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{ route('server.customer.get') }}">List customer</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ route('server.customer.get') }}">Danh sách người dùng</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('server.brand.get') }}">
                         <i class="icon-paper menu-icon side-bar-icon"></i>
-                        <span class="menu-title" id="Brand">Brand</span>
+                        <span class="menu-title" id="Brand">Nhãn hàng</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('server.category.get') }}">
                         <i class="icon-paper menu-icon side-bar-icon"></i>
-                        <span class="menu-title" id="Category">Category</span>
+                        <span class="menu-title" id="Category">Loại giày</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('server.statistic.get') }}">
+                        <i class="icon-bar-graph menu-icon"></i>
+                        <span class="menu-title" id="Statistic">Thống kê</span>
                     </a>
                 </li>
             </ul>
@@ -160,7 +155,7 @@
 
             <footer class="footer">
                 <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Create by DTD:<a href="#" target="_blank">mrboss8620002gmail.com</a></span>
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Tạo bởi DTD<a href="#" target="_blank">mrboss862000@gmail.com</a></span>
                 </div>
             </footer>
         </div>
@@ -206,6 +201,9 @@
         }
         if (selectedNavItem !== 'Product')  {
             $('#form-elements').removeClass('show');
+        }
+        if (selectedNavItem !== 'Order')  {
+            $('#editors').removeClass('show');
         }
 
         selectedNavItem = $('#' + selectedNavItem);

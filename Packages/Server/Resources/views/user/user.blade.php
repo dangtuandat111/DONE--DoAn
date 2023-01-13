@@ -12,40 +12,40 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Account List</h4>
+                        <h4 class="card-title">Danh sách tài khoản</h4>
                         <div class="new-action float-right" style="padding-top: 13px; margin-bottom: 1.5rem;">
-                            <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.account.create.get') }}">Create new account</a>
+                            <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.account.create.get') }}">Thêm tài khoản mới</a>
                         </div>
                         <div class="form-group float-right" style="padding-right: 1rem">
                             <div class="input-group">
-                                <input type="text" class="form-control border-radius-15" id="search_account_name" placeholder="Search by name" name="search">
+                                <input type="text" class="form-control border-radius-15" id="search_account_name" placeholder="Tìm kiếm theo tên" name="search">
                                 <div class="input-group-append">
-                                    <button class="btn btn-sm btn-primary" type="button" id="buttonSearch">Search</button>
+                                    <button class="btn btn-sm btn-primary" type="button" id="buttonSearch">Tìm kiếm</button>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group col-4 padding-r-15 d-flex align-items-center">
-                            <label class="mb-0 pr-2">Show</label>
+                            <label class="mb-0 pr-2">Hiển thị</label>
                             <select name="order-listing_length" aria-controls="order-listing" class="custom-select custom-select-sm form-control h-100 border-radius-15">
                                 <option value="2" selected="">2</option>
                                 <option value="5">5</option>
                                 <option value="10">10</option>
-                                <option value="-1">All</option>
+                                <option value="-1">Tất cả</option>
                             </select>
-                            <label class="mb-0 pl-2">entries</label>
+                            <label class="mb-0 pl-2"> / trang</label>
                         </div>
                         <div class=""
                         <div class="table-responsive account_list">
                             <table class="table table-striped" id="sortable-table-1">
                                 <thead>
                                 <tr>
-                                    <th class="pr-0">STT</th>
-                                    <th class="sortStyle unsortStyle">Name<i class="ti-angle-down"></i></th>
-                                    <th class="sortStyle unsortStyle">Image</th>
-                                    <th class="sortStyle unsortStyle pr-0">Email<i class="ti-angle-down"></i></th>
-                                    <th class="sortStyle unsortStyle">Phone number<i class="ti-angle-down"></i></th>
-                                    <th class="sortStyle unsortStyle">Status</th>
-                                    <th class="sortStyle unsortStyle">Action</th>
+                                    <th class="pr-0">#</th>
+                                    <th class="sortStyle unsortStyle">Tên tài khoản<i class="ti-angle-down"></i></th>
+                                    <th class="sortStyle unsortStyle">Ảnh đại diện</th>
+                                    <th class="sortStyle unsortStyle pr-0">Địa chỉ email<i class="ti-angle-down"></i></th>
+                                    <th class="sortStyle unsortStyle">Số điện thoại<i class="ti-angle-down"></i></th>
+                                    <th class="sortStyle unsortStyle">Tình trạng</th>
+                                    <th class="sortStyle unsortStyle">Hành động thêm</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -60,13 +60,13 @@
                                         <td class="pr-0">{{ $user_data_item->email }}</td>
                                         <td class="mw-100px wrap-content">{{ $user_data_item->phone_number }}</td>
                                         <td>
-                                            <button class="badge badge-warning border-0 @if ($user_data_item->status !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_enabled" data-id="{{ $user_data_item->id }}">Enabled</button>
-                                            <button class="badge badge-danger border-0 @if ($user_data_item->status == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_disabled" data-id="{{ $user_data_item->id }}">Disabled</button>
+                                            <button class="badge badge-warning border-0 @if ($user_data_item->status !== 'Enabled') btn btn-light btn-rounded disabled @endif update_status_enabled" data-id="{{ $user_data_item->id }}">Khả dụng</button>
+                                            <button class="badge badge-danger border-0 @if ($user_data_item->status == 'Enabled') btn btn-light btn-rounded disabled @endif update_status_disabled" data-id="{{ $user_data_item->id }}">Không khả dụng</button>
                                         </td>
                                         <td>
                                             <button class="badge badge-info btn btn-primary border-0 @if ($user_data_item->role == 1) disabled @endif update_admin_role" data-id="{{ $user_data_item->id }}" data-toggle="modal" data-target="#js-panel">
                                                 @if ($user_data_item->role == 0)
-                                                    Employee / Promote
+                                                    Nhân viên / Cấp quyền
                                                 @else
                                                     Admin
                                                 @endif

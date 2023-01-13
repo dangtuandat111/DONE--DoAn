@@ -3,15 +3,15 @@
         <table class="table table-striped" id="product-table">
             <thead>
             <tr>
-                <th>STT</th>
-                <th class="sortStyle unsortStyle">Name</th>
-                <th class="sortStyle unsortStyle">Slug</th>
-                <th class="sortStyle unsortStyle">Price</th>
-                <th class="sortStyle unsortStyle">Created at</th>
-                <th class="sortStyle unsortStyle">Updated at</th>
-                <th class="sortStyle unsortStyle">Status</th>
-                <th class="sortStyle unsortStyle">More Info</th>
-                <th class="sortStyle unsortStyle">Action</th>
+                <th>#</th>
+                <th class="sortStyle unsortStyle">Tên sản phẩm</th>
+                <th class="sortStyle unsortStyle">Tên slug</th>
+                <th class="sortStyle unsortStyle">Giá tiền</th>
+                <th class="sortStyle unsortStyle">Thời gian tạo</th>
+                <th class="sortStyle unsortStyle">Thời gian cập nhật</th>
+                <th class="sortStyle unsortStyle">Tình trạng</th>
+                <th class="sortStyle unsortStyle">Thông tin thêm</th>
+                <th class="sortStyle unsortStyle">Hành động thêm</th>
             </tr>
             </thead>
             <tbody>
@@ -24,29 +24,29 @@
                     <td>{{ $product_data_item['price'] }}$</td>
                     <td>{{ $product_data_item['c_at'] }}</td>
                     <td>{{ $product_data_item['u_at'] }}</td>
-                    <td>{{ $product_data_item['status'] }}</td>
+                    <td>{{ $product_data_item['status'] ? 'Khả dụng' : 'Không khả dụng' }}</td>
                     <td>
-                        <button class="add btn btn-icon text-primary expand-button bg-transparent align-content-center"><i
-                                class="icon-circle-plus"></i></button>
+                        <button class="add btn btn-icon text-primary expand-button bg-transparent align-content-center" data-id="{{ $product_data_item['id'] }}"><i
+                                class="icon-circle-plus" data-id="{{ $product_data_item['id'] }}"></i></button>
                     </td>
                     <td>
-                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.product.edit', ['id' => $product_data_item['id']]) }}">Edit</a>
+                        <a type="button" class="btn btn-outline-info btn-fw padding-action" href="{{ route('server.product.edit', ['id' => $product_data_item['id']]) }}">Chỉnh sửa</a>
                     </td>
                 </tr>
-                <tr class="product_detail expandable-table d-none">
+                <tr class="product_detail expandable-table d-none" data-id="{{ $product_data_item['id'] }}">
                     <td colspan="12">
                         <div>
                             <div class="d-flex justify-content-between">
                                 <div class="cell-hilighted">
                                     <div class="d-flex mb-2">
                                         <div class="me-2 min-width-cell">
-                                            <p>Created at</p>
+                                            <p>Thời gian tạo</p>
                                             <h6>
                                                 {{ $product_data_item->c_at }}
                                             </h6>
                                         </div>
                                         <div class="min-width-cell">
-                                            <p>Last updated</p>
+                                            <p>Thời gian cập nhật</p>
                                             <h6>
                                                 {{ $product_data_item->u_at }}
                                             </h6>
@@ -54,13 +54,13 @@
                                     </div>
                                     <div class="d-flex mb-2">
                                         <div class="me-2 min-width-cell">
-                                            <p>Last discount start</p>
+                                            <p>Thời gian khuyến mại</p>
                                             <h6>
                                                 {{ $product_data_item->s_at }}
                                             </h6>
                                         </div>
                                         <div class="min-width-cell">
-                                            <p>Last discount end</p>
+                                            <p>Thời gian hết khuyến mãi</p>
                                             <h6>
                                                 {{ $product_data_item->e_at }}
                                             </h6>
@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="expanded-table-normal-cell">
-                                    <div class="me-2 mb-4"><p>Discount</p><h6>{{ $product_data_item['discount'] }}</h6></div>
+                                    <div class="me-2 mb-4"><p>Giảm giá (%)</p><h6>{{ $product_data_item['discount'] }}</h6></div>
                                 </div>
                                 <div class="expanded-table-normal-cell">
                                     <div class="me-2 mb-4">
@@ -78,12 +78,12 @@
                                     </div>
                                 </div>
                                 <div class="expanded-table-normal-cell">
-                                    <div class="me-2 mb-4"><p>Brand name</p><h6>{{ $product_data_item['brand_name'] }}</h6></div>
-                                    <div class="me-2"><p>Brand slug</p><h6>{{ $product_data_item['brand_slug'] }}</h6></div>
+                                    <div class="me-2 mb-4"><p>Tên nhãn hàng</p><h6>{{ $product_data_item['brand_name'] }}</h6></div>
+                                    <div class="me-2"><p>Tên slug nhãn hàng</p><h6>{{ $product_data_item['brand_slug'] }}</h6></div>
                                 </div>
                                 <div class="expanded-table-normal-cell">
-                                    <div class="me-2 mb-4"><p>Category name</p><h6>{{ $product_data_item['category_name'] }}</h6></div>
-                                    <div class="me-2"><p>Catgory slug</p><h6>{{ $product_data_item['category_slug'] }}</h6></div>
+                                    <div class="me-2 mb-4"><p>Tên loại giày</p><h6>{{ $product_data_item['category_name'] }}</h6></div>
+                                    <div class="me-2"><p>Tên slug loại giày</p><h6>{{ $product_data_item['category_slug'] }}</h6></div>
                                 </div>
                             </div>
                         </div>

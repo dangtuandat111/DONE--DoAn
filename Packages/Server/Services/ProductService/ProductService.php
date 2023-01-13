@@ -80,7 +80,28 @@ class ProductService {
         return [$this->productVariant->getInfoByProduct($id), $this->product->getInfo($id), $product_variant_size];
     }
 
+    public function getDetailProductVariant($id) {
+        $product_variant_data = $this->productVariant->getInfo($id);
 
+        $product_variant_size = [];
+        $product_variant_image = [];
+        foreach ($product_variant_data as $product_data_item) {
+            $product_variant_size[] = DB::table('product_variant_property')
+                ->join('property', 'property.id', '=', 'product_variant_property.id_property')
+                ->where([
+                    ['property.id_property_group', '=', 5],
+                    ['product_variant_property.id_product_variant', '=', $product_data_item->id],
+                ])
+                ->get('value')[0];
+        }
+        $product_variant_image[] = DB::table('product_variant_image')
+            ->where([
+                ['product_variant_image.id_product_variant', '=', $product_variant_data[0]->id],
+            ])
+            ->get(['name', 'id']);
+
+        return [$this->productVariant->getInfo($id), $this->product->getInfo($product_variant_data[0]->id_product), $product_variant_size, $product_variant_image[0]];
+    }
 
     public function getExtraPVData($id) {
         $product_variant_option = DB::table('product_variant_option')->where('id_product_variant', $id)->get('id_option');
@@ -88,14 +109,41 @@ class ProductService {
         return [$product_variant_option, $product_variant_property];
     }
 
-    public function updatePV() {
+    public function updatePV($id,
+        $product_variant_params,
+        $product_variant_property,
+        $product_variant_option,
+        $pv_file,
+        $imageName
+    ) {
         DB::beginTransaction();
 
         try {
-            $product_id = DB::table('product')->get('id')[0];
+            DB::table('product_variant')->where('id', '=', $id)->update($product_variant_params);
 
-            $product_variant_params['id_product'] = $product_id;
-            $product_variant_id = DB::table('product_variant')->insertGetId($product_variant_params);
+            DB::table('product_variant_property')->where("id_product_variant", '=', $id)->delete();
+
+            foreach ($product_variant_property as $p_item) {
+                DB::table('product_variant_property')->insert($p_item);
+            }
+
+            DB::table('product_variant_option')->where("id_product_variant", '=', $id)->delete();
+
+            foreach ($product_variant_option as $o_item) {
+                DB::table('product_variant_option')->insert($o_item);
+            }
+
+            if ($pv_file) {
+                DB::table('product_variant_image')->where('id_product_variant','=', $id)
+                    ->whereNotIn("id", $pv_file)->delete();
+            }
+
+            foreach ($imageName as $image) {
+                DB::table('product_variant_image')->insert([
+                    'id_product_variant' => $id,
+                    'name' => $image,
+                ]);
+            }
 
             DB::commit();
         } catch (\Exception $e) {

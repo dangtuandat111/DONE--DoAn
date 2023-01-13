@@ -1,6 +1,6 @@
 import {ajaxWithCsrf} from "../app";
 toastr.options.timeOut = 5000;
-let errorMessage = 'Message Error: ';
+let errorMessage = 'Lỗi: ';
 
 let currentParams;
 
@@ -29,13 +29,16 @@ function getSearchProduct(page = 1) {
                 $("#product-table").tablesort();
                 expandRow();
                 getProductVariant();
+                $('.page-link-page').on('click', function () {
+                    getSearchProduct($(this).attr('data-page'));
+                })
             })
         } else {
-            toastr.error('Property group is not exist.');
+            toastr.error('Nhóm thuộc tính không tồn tại.');
             return;
         }
-        toastr.success('Search updated');
-    }, 'Something error!!!');
+        toastr.success('Cập nhật thành công');
+    }, 'Có lỗi bất ngờ xảy ra!');
 
     function appendResponse(res, callback) {
         $('.data-product-group-table').html(res.data.html);
@@ -46,7 +49,8 @@ function getSearchProduct(page = 1) {
 
 function expandRow() {
     $('.expand-button').on('click', function () {
-        let this_detail = $(this).closest('tbody').find('.product_detail');
+        let id = $(this).attr('data-id');
+        let this_detail = $(this).closest('tbody').find('.product_detail[data-id=' + id + ']');
         if ($(this_detail).hasClass('d-none')) {
             $(this_detail).removeClass('d-none');
         } else {
@@ -79,9 +83,9 @@ function getProductVariant() {
                 $('#productVariant .card-body').html('');
                 $('#productVariant .card-body').append(res.data.html);
             } else {
-                toastr.error(errorMessage + 'Customer is not exist.')
+                toastr.error(errorMessage + 'Người dùng không tồn tại.')
             }
-        }, 'Something error!!!')
+        }, 'Có lỗi bất ngờ xảy ra!')
         if (callback) { callback(); }
     }
 }

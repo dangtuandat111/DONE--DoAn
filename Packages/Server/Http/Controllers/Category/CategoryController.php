@@ -47,13 +47,13 @@ class CategoryController extends Controller {
             } else {
                 return response()->json([
                     'status' =>  $this->error_status,
-                    'errorMessage' => 'Failed on update category info.'
+                    'errorMessage' => 'Cập nhật không thành công.'
                 ]);
             }
         } catch (\Exception $e) {
             return response()->json([
                 'status' => $this->error_status,
-                'errorMessage' => $e->getMessage()
+                'errorMessage' => 'Có lỗi bất ngờ xảy ra.'
             ]);
         }
     }

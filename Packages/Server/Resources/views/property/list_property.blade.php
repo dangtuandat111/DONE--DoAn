@@ -3,8 +3,8 @@
         <thead>
         <tr>
             <th>STT</th>
-            <th class="sortStyle unsortStyle">Property name</th>
-            <th class="sortStyle unsortStyle">Property value</th>
+            <th class="sortStyle unsortStyle">Tên thuộc tính</th>
+            <th class="sortStyle unsortStyle">Giá trị</th>
         </tr>
         </thead>
         <tbody>

@@ -38,7 +38,7 @@ class CustomerRepository extends BaseRepository
         ->when($params['status'], function($query) use ($params){
             $query->where('status', '=', $params['status']);
         })
-        ->paginate($params['perPage'] > 0 ? $params['perPage'] : 100000);
+        ->paginate($params['perPage'] > 0 ? $params['perPage'] : 100000, ['*'],'page',$params['page']);
 
         return $query;
     }
@@ -48,7 +48,7 @@ class CustomerRepository extends BaseRepository
 
         try {
             DB::table('sessions')->where([
-                ['user_id', $user_id],
+                ['customer_id', $user_id],
                 ['type', 0]
             ])->delete();
 
@@ -71,7 +71,7 @@ class CustomerRepository extends BaseRepository
 
         try {
             DB::table('sessions')->where([
-                ['user_id', $user_id],
+                ['customer_id', $user_id],
                 ['type', 0]
             ])->delete();
 

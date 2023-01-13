@@ -24,11 +24,11 @@ class LoginController extends Controller {
                 ]);
                 return redirect()->route('server.home.get');
             } else {
-                return back()->withErrors('Message Error: Login unsuccessful. Please try again later.')->withInput();
+                return back()->withErrors('Lỗi: Đăng nhập không thành công. Vui lòng thử lại sau')->withInput();
             }
         } catch (\Exception $e) {
             logger()->error($e->getMessage());
-            return back()->withErrors('Message Error: Login unsuccessful. Please try again later.')->withInput();
+            return back()->withErrors('Đăng nhập không thành công. Vui lòng thử lại sau.')->withInput();
         }
     }
 

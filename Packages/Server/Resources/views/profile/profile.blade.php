@@ -25,47 +25,67 @@
                                     </div>
                                     <p class="w-75 mx-auto mb-3">
                                         @if (isset($admin_data) && isset($admin_data->role) && $admin_data->role == 1)
-                                            This account has admin permissions
+                                            Tài khoản có quyền admin
                                         @else
-                                            This account has employee permissions
+                                            Tài khoản có quyền nhân viên
                                         @endif
                                     </p>
                                 </div>
                                 <div class="py-4">
                                     <p class="clearfix">
-                                        <span class="float-left">Status</span>
-                                        <span class="float-right text-muted">Enabled</span>
+                                        <span class="float-left">Tình trạng</span>
+                                        <span class="float-right text-muted">Khả dụng</span>
                                     </p>
                                     <p class="clearfix">
                                         <span class="float-left">
-                                            Phone
+                                            Số điện thoại
                                         </span>
                                         <span class="float-right text-muted">{{ $admin_data->phone_number }}</span>
                                     </p>
                                     <p class="clearfix">
                                         <span class="float-left">
-                                            Email
+                                            Địa chỉ email
                                         </span>
                                         <span class="float-right text-muted">{{ $admin_data->email }}</span>
                                     </p>
                                     <p class="clearfix">
                                         <span class="float-left">
-                                        Created at
+                                            Thời gian tạo
                                         </span>
                                         <span class="float-right text-muted">
-                                            <span>{{ $admin_data->created_at }}</span>
+
+                                            <span>{{ \Carbon\Carbon::parse($admin_data->created_at)->format('d-m-Y')}}</span>
                                         </span>
                                     </p>
                                     <p class="clearfix">
                                         <span class="float-left">
-                                            Updated at
+                                            Thời gian cập nhật
                                         </span>
                                         <span class="float-right text-muted">
-                                            <span>{{ $admin_data->updated_at }}</span>
+                                            <span>{{ \Carbon\Carbon::parse($admin_data->updated_at)->format('d-m-Y')}}</span>
                                         </span>
                                     </p>
                                 </div>
-                                <button class="btn btn-primary btn-block mb-2">Change avatar</button>
+                                <button class="btn btn-primary btn-block mb-2 btn-change-avatar">Thay đổi avatar</button>
+                                <div class="form-edit border d-none" id="change_avatar" style="padding: 20px;">
+                                    <form method="post" class="form-sample" action="{{ route('server.profile.update.avatar') }}" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="">
+                                            <label>Tải lên ảnh đại diện</label>
+                                            <div class="input-group col-xs-12">
+                                                <input type="file" name="avatar_image" class="file-upload-default d-none">
+
+                                                <input type="text" class="form-control file-upload-info" placeholder="Tải ảnh lên" name="avatar_image">
+                                                <span class="input-group-append">
+                                                    <button class="file-upload-browse btn btn-primary" type="button">Tải</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 px-0 col-12 mt-5">
+                                            <button class="btn bg-primary text-white" type="submit">Cập nhật</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                             <div class="col-lg-8">
                                 <div class="mt-4 py-2 border-top border-bottom" role="tablist">
@@ -73,13 +93,13 @@
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link active" id="nav-history-tab" data-target="#nav-history">
                                                 <i class="ti-user"></i>
-                                                History
+                                                Lịch sử đăng nhập
                                             </button>
                                         </li>
                                         <li class="nav-item" role="presentation">
                                             <button class="nav-link" id="nav-profile-tab" data-target="#nav-profile">
                                                 <i class="ti-calendar"></i>
-                                                Edit Profile
+                                                Chỉnh sửa thông tin
                                             </button>
                                         </li>
                                     </ul>
@@ -91,11 +111,11 @@
                                                 <div class="ms-4">
                                                     <h6>
                                                         <small class="ms-4 text-muted">
-                                                            <i class="ti-time me-1"></i> {{ $user_history_data_item->ago }}
+                                                            <i class="ti-time me-1"></i> {{ date('d-m-Y', strtotime($user_history_data_item->ago)) }}
                                                         </small>
                                                     </h6>
                                                     <p>
-                                                        <strong>{{ $admin_data->name }}</strong> is logged in
+                                                        <strong>{{ $admin_data->name }}</strong> đã đăng nhập
                                                     </p>
                                                 </div>
                                             </div>
@@ -107,42 +127,42 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title">Profile</h4>
                                                     <p class="card-description">
-                                                        Edit Profile
+                                                        Chỉnh sửa thông tin cá nhân
                                                     </p>
                                                     <form id="editProfileForm" class="forms-sample" method="post">
                                                         @csrf
                                                         <input type="hidden" class="form-control" id="user_id" value="{{ $admin_data->id }}">
                                                         <div class="form-group row">
-                                                            <label for="name" class="col-sm-3 col-form-label">Name</label>
+                                                            <label for="name" class="col-sm-3 col-form-label">Tên</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="name" placeholder="Username" value="{{ $admin_data->name }}">
+                                                                <input type="text" class="form-control" id="name" placeholder="Tên" value="{{ $admin_data->name }}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                                            <label for="email" class="col-sm-3 col-form-label">Địa chỉ email</label>
                                                             <div class="col-sm-9">
-                                                                <input type="email" class="form-control" id="email" placeholder="Email" value="{{ $admin_data->email }}">
+                                                                <input type="email" class="form-control" id="email" placeholder="Địa chỉ email" value="{{ $admin_data->email }}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="phone_number" class="col-sm-3 col-form-label">Mobile</label>
+                                                            <label for="phone_number" class="col-sm-3 col-form-label">Số điện thoại</label>
                                                             <div class="col-sm-9">
-                                                                <input type="text" class="form-control" id="phone_number" placeholder="Phone number" value="{{ $admin_data->phone_number }}">
+                                                                <input type="text" class="form-control" id="phone_number" placeholder="Số điện thoại" value="{{ $admin_data->phone_number }}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="password" class="col-sm-3 col-form-label">Password</label>
+                                                            <label for="password" class="col-sm-3 col-form-label">Mật khẩu</label>
                                                             <div class="col-sm-9">
-                                                                <input type="password" class="form-control" id="password" placeholder="Password" maxlength="8">
+                                                                <input type="password" class="form-control" id="password" placeholder="Mật khẩu">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="password_confirm" class="col-sm-3 col-form-label">Re Password</label>
+                                                            <label for="password_confirm" class="col-sm-3 col-form-label">Xác nhận mật khẩu</label>
                                                             <div class="col-sm-9">
-                                                                <input type="password" class="form-control" id="password_confirm" placeholder="Password Confirm" maxlength="8">
+                                                                <input type="password" class="form-control" id="password_confirm" placeholder="Xác nhận mật khẩu">
                                                             </div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary me-2">Update</button>
+                                                        <button type="submit" class="btn btn-primary me-2">Cập nhật</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -163,6 +183,8 @@
 
 @section('more-js')
     <script src="{{ asset('DoAnTotNghiep/server/assets/js/profiler/profiler.js') }}"></script>
+    <script src="{{ asset('DoAnTotNghiep/server/js/file-upload.js') }}"></script>
+
     <script>
         $(document).ready(function () {
             toastr.options.timeOut = 5000;

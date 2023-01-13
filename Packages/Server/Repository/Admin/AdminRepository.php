@@ -13,6 +13,10 @@ class AdminRepository extends BaseRepository
         return \Packages\Server\Entities\Model\Admin::class;
     }
 
+    public function checkRole($id) {
+        return (DB::table('user')->where('id', $id)->get('role'));
+    }
+
     public function getInfo($id)
     {
         return (DB::table('user')->where('id', $id)->get());

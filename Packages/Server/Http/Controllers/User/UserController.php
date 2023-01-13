@@ -41,19 +41,24 @@ class UserController extends Controller {
             } else {
                 return response()->json([
                     'status' =>  $this->error_status,
-                    'errorMessage' => 'Failed on update user user.'
+                    'errorMessage' => 'Cập nhật thông tin người dùng thành công.'
                 ]);
             }
         } catch (\Exception $e) {
             return response()->json([
                 'status' => $this->error_status,
-                'errorMessage' => $e->getMessage()
+                'errorMessage' => 'Có lỗi bất ngờ xảy ra.'
             ]);
         }
     }
 
     public function createAccount(Request $request) {
         if ($request->isMethod('post')) {
+            $result = $this->user->checkRole(\Auth::guard('admin')->id())[0];
+            if (!$result != 1) {
+                return back()->with('error', 'Tài khoản không có quyền');
+            }
+
             // Do nothing
             $date = Carbon::now()->format('dmhis');
 
