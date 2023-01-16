@@ -276,8 +276,6 @@ function colorFindData() {
 }
 
 function changeImage() {
-    $('.product-large-image').children().not(':last').remove();
-    $('.owl-stage').children().remove();
     let product_variant_image_data;
     for(let i = 0; i < product_variant_data.length; i++) {
         if (product_variant_data[i].color == current_params.color) {
@@ -286,6 +284,8 @@ function changeImage() {
         }
     }
     if (product_variant_image_data.image.length) {
+        $('.product-large-image').children().not(':last').remove();
+        $('.owl-stage').children().remove();
         let index = 0;
         product_variant_image_data.image.forEach((image) => {
             let id = 'product-0' + index;

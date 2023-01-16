@@ -83,7 +83,9 @@ class ProductController extends Controller {
                 $product_variant_params = [
                     'slug' => Str::slug($request->get('product_name', '')),
                     'count' => $request->get('product_variant_count', 0),
-                    'description' => $request->get('product_variant_description', '')
+                    'description' => $request->get('product_variant_description', ''),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
                 ];
             } else {
                 // Select current one
@@ -123,7 +125,7 @@ class ProductController extends Controller {
 
             return redirect()->route('server.product.get')->with('message', 'Create product success');
         } else {
-            return view('server::product.create_product')->with($this->product_service->getData())->with([
+            return view('server::product.create_product')->with($this->product_service->getDataEnabled())->with([
                 'product_data' => $this->product_service->getAllProduct(),
             ])->with($this->product_service->getExtendData());
         }
@@ -156,7 +158,6 @@ class ProductController extends Controller {
     public function editProduct(Request $request) {
         if ($request->isMethod('post')) {
             $date = Carbon::now()->format('dmhis');
-
             $product_params = [
                 'name' => $request->get('product_name', ''),
                 'slug' => Str::slug($request->get('product_name', '') . '-' . $date),
@@ -167,6 +168,7 @@ class ProductController extends Controller {
                 'id_brand' => $request->get('id_brand', 15),
                 'id_category' => $request->get('id_category', 8),
             ];
+//dd($request->get('product_id'));
 
             $this->product_service->productUpdate($request->get('product_id'), $product_params);
             return redirect()->route('server.product.get');

@@ -23,7 +23,11 @@
                     <td>{{ $product_data[0]->name }}</td>
                     <td>{{ $product_variant_data_item->count }}</td>
                     <td>
-                        <img src="{{ asset('DoAnTotNghiep/server/assets/images/product/' . $product_variant_data_item->thumbnail) }}"
+                        @if ($product_variant_data_item->thumbnail || $product_variant_data_item->thumbnail == 'product_default.png')
+                            <img src="{{ asset('DoAnTotNghiep/server/assets/images/product/' . $product_data[0]->thumbnail) }}">
+                        @else
+                            <img src="{{ asset('DoAnTotNghiep/server/assets/images/product/' . $product_variant_data_item->thumbnail) }}">
+                        @endif
                     </td>
                     <td>{{ \Carbon\Carbon::parse($product_variant_data_item->updated_at)->format('d-m-Y')}}</td>
                     <td>{{ \Carbon\Carbon::parse($product_variant_data_item->created_at)->format('d-m-Y')}}</td>

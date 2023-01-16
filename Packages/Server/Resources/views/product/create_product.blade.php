@@ -174,7 +174,7 @@
                                         @endforeach
                                     </div>
                                     <div class="info-label">
-                                        <label for="product_variant_option fw-bold">Chọn tùy chọn</label> <i class="mdi mdi-alert-circle-outline"></i>
+                                        <label for="product_variant_option fw-bold">Chọn tùy chọn</label>
                                     </div>
                                     <div class="form-group product_variant_option_form_group pl-4">
                                         @foreach($option_group_data as $option_group_data_item)

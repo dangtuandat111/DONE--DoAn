@@ -16,10 +16,12 @@ function updateCart() {
 
         if (!params.address) {
             toastr.error('Thông tin địa chỉ không được bỏ trống')
+            return;
         }
 
         if (!params.phone_number) {
             toastr.error('Thông tin số điện thoại không được bỏ trống')
+            return;
         }
 
         ajaxWithCsrf(url, params, function processResponse(res) {

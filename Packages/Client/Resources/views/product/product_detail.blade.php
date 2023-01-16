@@ -196,6 +196,7 @@
     <!-- input hidden -->
     <input type="hidden" id="add_cart" value="{{ route('client.cart.add') }}">
     <input type="hidden" id="product_data" value="{{ json_encode($product_variant_data) }}">
+    <input type="hidden" id="product_data_summary" value="{{ json_encode($product_data) }}">
     <input type="hidden" id="currentChoose" value="{{ ($product_variant_data[0]) }}">
     <input type="hidden" id="imageURL" value="{{ asset('DoAnTotNghiep/server/assets/images/product/') }}">
 @endsection

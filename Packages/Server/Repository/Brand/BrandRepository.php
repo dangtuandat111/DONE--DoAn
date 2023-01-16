@@ -21,6 +21,11 @@ class BrandRepository extends BaseRepository
         return (DB::table('brand')->where('id', $id)->get());
     }
 
+    public function getALlEnabled()
+    {
+        return (DB::table('brand')->where('status', 1)->get());
+    }
+
     public function countBrand() {
         return DB::table('brand')->count();
     }

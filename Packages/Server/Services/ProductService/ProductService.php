@@ -46,6 +46,14 @@ class ProductService {
         ];
     }
 
+    public function getDataEnabled() {
+        return [
+            'selectedNavItem' => self::selectedNavItem,
+            'brand_data' => $this->brand->getALlEnabled(),
+            'category_data' => $this->category->getALlEnabled(),
+        ];
+    }
+
     public function getProductData($id) {
         return $this->product->getInfo($id);
     }

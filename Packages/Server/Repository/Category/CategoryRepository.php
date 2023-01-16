@@ -25,6 +25,11 @@ class CategoryRepository extends BaseRepository
         return DB::table('category')->count();
     }
 
+    public function getALlEnabled()
+    {
+        return (DB::table('category')->where('status', 1)->get());
+    }
+
     public function getCategoryBySlug($slug) {
         return DB::table('category')->where('slug' , $slug)->get();
     }

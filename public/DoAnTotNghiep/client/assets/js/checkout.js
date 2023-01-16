@@ -2384,9 +2384,11 @@ function updateCart() {
     params.phone_number = $('#phone_number').val();
     if (!params.address) {
       toastr.error('Thông tin địa chỉ không được bỏ trống');
+      return;
     }
     if (!params.phone_number) {
       toastr.error('Thông tin số điện thoại không được bỏ trống');
+      return;
     }
     (0,_app__WEBPACK_IMPORTED_MODULE_0__.ajaxWithCsrf)(url, params, function processResponse(res) {
       if (res.data.status === true) {

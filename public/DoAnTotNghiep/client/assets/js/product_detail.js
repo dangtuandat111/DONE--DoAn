@@ -2691,8 +2691,6 @@ function colorFindData() {
   }
 }
 function changeImage() {
-  $('.product-large-image').children().not(':last').remove();
-  $('.owl-stage').children().remove();
   var product_variant_image_data;
   for (var i = 0; i < product_variant_data.length; i++) {
     if (product_variant_data[i].color == current_params.color) {
@@ -2701,6 +2699,8 @@ function changeImage() {
     }
   }
   if (product_variant_image_data.image.length) {
+    $('.product-large-image').children().not(':last').remove();
+    $('.owl-stage').children().remove();
     var index = 0;
     product_variant_image_data.image.forEach(function (image) {
       var id = 'product-0' + index;

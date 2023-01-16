@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class OrderService {
     public function getOrder()  {
-        $order_list = DB::table('order')->paginate(15);
+        $order_list = DB::table('order')->paginate(20);
 
         foreach($order_list as $key => $order) {
            $customer_name[] = DB::table('customer')->where('id', '=', $order->id_customer)->get('name')[0]->name;

@@ -2472,7 +2472,7 @@ function setupChart(datasets, labels) {
         label: 'Thống kê doanh thu theo từng sản phẩm ($)',
         data: datasets,
         //backgroundColor:'green',
-        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)', 'rgba(66, 135, 245, 0.6)', 'rgba(129, 66, 245, 0.6)', 'rgba(245, 206, 66, 0.6)', 'rgba(198, 99, 150, 0.6)', 'rgba(200, 16, 111, 0.6)', 'rgba(150, 38, 90, 0.6)', 'rgba(111, 11, 9, 0.6)', 'rgba(55, 2, 96, 0.6)', 'rgba(12, 21, 121, 0.6)', 'rgba(53, 32, 22, 0.6)'],
         borderWidth: 1,
         borderColor: '#2238d7',
         hoverBorderWidth: 3,
@@ -2536,7 +2536,7 @@ function setupSellChart(datasets, labels) {
       datasets: [{
         data: datasets,
         //backgroundColor:'green',
-        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)', 'rgba(66, 135, 245, 0.6)', 'rgba(129, 66, 245, 0.6)', 'rgba(245, 206, 66, 0.6)', 'rgba(198, 99, 150, 0.6)', 'rgba(200, 16, 111, 0.6)', 'rgba(150, 38, 90, 0.6)', 'rgba(111, 11, 9, 0.6)', 'rgba(55, 2, 96, 0.6)', 'rgba(12, 21, 121, 0.6)', 'rgba(53, 32, 22, 0.6)'],
         borderWidth: 1,
         borderColor: '#2238d7',
         hoverBorderWidth: 3,
@@ -2598,7 +2598,7 @@ function setupCountChart(datasets, labels) {
       datasets: [{
         data: datasets,
         //backgroundColor:'green',
-        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+        backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(54, 162, 235, 0.6)', 'rgba(255, 206, 86, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)', 'rgba(66, 135, 245, 0.6)', 'rgba(129, 66, 245, 0.6)', 'rgba(245, 206, 66, 0.6)', 'rgba(198, 99, 150, 0.6)', 'rgba(200, 16, 111, 0.6)', 'rgba(150, 38, 90, 0.6)', 'rgba(111, 11, 9, 0.6)', 'rgba(55, 2, 96, 0.6)', 'rgba(12, 21, 121, 0.6)', 'rgba(53, 32, 22, 0.6)'],
         borderWidth: 1,
         borderColor: '#2238d7',
         hoverBorderWidth: 3,

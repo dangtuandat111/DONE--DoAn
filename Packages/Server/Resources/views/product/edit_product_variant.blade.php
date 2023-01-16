@@ -207,5 +207,6 @@
 
 @section('more-js')
     <script src="{{ asset('DoAnTotNghiep/server/assets/js/product/edit_product_variant.js') }}"></script>
+    <script src="{{ asset('DoAnTotNghiep/server/js/file-upload.js') }}"></script>
 @endsection
 

@@ -2685,7 +2685,7 @@ function uploadMutipleImage() {
       var _time = d.getTime();
       var _html = '<li id="li_files_' + _time + '" class="li_file_hide">';
       _html += '<div class="img-wrap">';
-      _html += '<span class="close" onclick="DelImg(this)">×</span>';
+      _html += '<span class="close delThis" style="z-index: 9999;" onclick="DelImg(this)">×</span>';
       _html += ' <div class="img-wrap-box"></div>';
       _html += '</div>';
       _html += '<div class="' + _time + '">';
@@ -2708,6 +2708,9 @@ function uploadMutipleImage() {
     }
   });
 }
+$(document).on('click', '.delThis', function () {
+  $(this).closest('li').remove();
+});
 window.DelImg = function (el) {
   $(el).closest('li').remove();
   if ($('.dandev_attach_view').children().length <= 5) {

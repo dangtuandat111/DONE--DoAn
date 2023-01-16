@@ -435,14 +435,14 @@ class ClientService
             $index = 0;
             foreach($product_variant_option_result as $product_option_result_item) {
                 if ($product_option_result_item->name == 'Insole height option') {
-                    $insole_height[] = ['value' => $product_option_result_item->value, 'bonus' => $product_option_result_item->value];
+                    $insole_height[] = ['value' => $product_option_result_item->value, 'bonus' => $product_option_result_item->bonus];
                 } else if ($product_option_result_item->name == 'Shoelace color') {
-                    $shoelace_color[] = ['value' => $product_option_result_item->value, 'bonus' => $product_option_result_item->value];
+                    $shoelace_color[] = ['value' => $product_option_result_item->value, 'bonus' => $product_option_result_item->bonus];
                 }
                 $index++;
             }
             $product_variant_data_item['insole_height'] = $insole_height;
-            $product_variant_data_item['shoelace_color'] = (array) $shoelace_color;
+            $product_variant_data_item['shoelace_color'] = $shoelace_color;
         }
 
         $product_data->list_size = $product_list_size;
@@ -456,8 +456,12 @@ class ClientService
 
         foreach($cart_item as $item) {
             $product_variant_data = DB::table('product_variant')->where('id','=', $item->id_product_variant)->get()[0];
+            $product_cur_data = DB::table('product')->where('id','=', $product_variant_data->id_product)->get()[0];
             $item->totalCount = $product_variant_data->count;
             $item->img = $product_variant_data->thumbnail;
+            if ($product_variant_data->thumbnail == '' || $product_variant_data->thumbnail == 'product_default.png') {
+                $item->img = $product_cur_data->thumbnail;
+            }
             $item->slug = $product_variant_data->slug;
             $item->id_product_variant = $product_variant_data->id;
 
@@ -487,9 +491,10 @@ class ClientService
                 }
                 $sc = explode("SC", $item->note)[1];
                 $sc = explode("|", $sc);
-                if ($sc[0] > 0) {
+                if ($sc[0]) {
                     $sc_bonus = $sc[1];
                 }
+//                dd($sc_bonus);
                 $item->price += $ih_bonus + $sc_bonus;
             }
 
@@ -614,7 +619,7 @@ class ClientService
                     }
                     $sc = explode("SC", $item->note)[1];
                     $sc = explode("|", $sc);
-                    if ($sc[0] > 0) {
+                    if ($sc[0]) {
                         $sc_count = $sc[0];
                     }
                 }
